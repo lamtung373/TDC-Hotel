@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp">
+    <TextView
+        android:id="@+id/tvloaidichvu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/tv"
+        android:text="Bơi"
+        android:layout_marginRight="30dp"
+        android:layout_centerVertical="true"
+        />
+    <TextView
+        android:id="@+id/tvGiacu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/tv"
+        android:text="90000đ/phòng"
+        android:layout_toRightOf="@id/tvloaidichvu"
+        android:textSize="15dp"
+        android:textStyle="normal"
+        />
+     <TextView
+        android:id="@+id/tvGiamoi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/tv"
+        android:text="89000đ/phòng"
+         android:layout_below="@id/tvGiacu"
+         android:layout_toRightOf="@id/tvloaidichvu"
+        />
+<CheckBox
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:layout_marginRight="50dp"
+    />
+</RelativeLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment_Menu.Fragment_DatCho">
+
+    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvcolor"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@color/blue_2" />
+
+        <TextView
+            style="@style/title_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:padding="0dp"
+            android:text="LỊCH SỬ" />
+    </RelativeLayout>
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tlphong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvxinchao"
+        android:layout_margin="5dp"
+        app:tabIndicator="@drawable/tab_layout"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabIndicatorColor="@null"
+        app:tabIndicatorGravity="stretch"
+        app:tabMode="auto"
+        app:tabSelectedTextColor="#000000"
+        app:tabTextColor="@color/black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/vpphong"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tlphong"
+        android:layout_marginBottom="20dp" />
+
+</LinearLayout>

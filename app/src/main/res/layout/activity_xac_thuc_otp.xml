@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Xac_Thuc_OTP">
+
+    <ImageView
+        android:id="@+id/ivback"
+        style="@style/back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="Chúng tôi đã gửi mã xác minh đến số điện thoại của bạn vui lòng nhập mã vào ô dưới đây."
+        android:textColor="@color/black"
+        android:textSize="20dp" />
+
+    <EditText
+        style="@style/edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nhập mã OTP" />
+
+    <Button
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/gui_lai_otp"
+        android:hint="Gửi lại mã OTP"
+        android:textSize="15dp" />
+
+    <Button
+        android:id="@+id/btnXacminh"
+        style="@style/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="XÁC MINH" />
+</LinearLayout>

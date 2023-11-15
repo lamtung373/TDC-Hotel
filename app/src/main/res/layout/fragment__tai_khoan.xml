@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment_Menu.Fragment_TaiKhoan">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvcolor"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/blue_2" />
+
+            <TextView
+                android:id="@+id/title"
+                style="@style/title_screen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:padding="0dp"
+                android:text="THÔNG TIN CÁ NHÂN" />
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_below="@+id/title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/personal"/>
+
+        </RelativeLayout>
+
+        <TextView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Tên" />
+
+        <TextView
+            style="@style/edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nguyễn Văn A"
+            android:layout_marginBottom="0dp"/>
+
+        <TextView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Số điện thoại" />
+
+        <TextView
+            style="@style/edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="0123456789"
+            android:layout_marginBottom="0dp"/>
+
+        <TextView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Email" />
+
+        <EditText
+            style="@style/edt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginBottom="0dp"/>
+        <Button
+            android:id="@+id/btntieptuc"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Đăng xuất"
+            android:backgroundTint="@color/red"/>
+    </LinearLayout>
+
+</ScrollView>

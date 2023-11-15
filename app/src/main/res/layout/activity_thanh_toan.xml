@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Thanh_Toan">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvcolor"
+            android:layout_width="match_parent"
+            android:layout_height="1000dp"
+            android:background="@color/blue_2" />
+
+        <ImageView
+            android:id="@+id/ivback"
+            style="@style/back"
+            android:src="@drawable/back_white" />
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/title_screen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:padding="0dp"
+            android:text="THANH TOÁN" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/title"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/linear_thanhtoan"
+            android:orientation="vertical"
+            android:layout_alignBottom="@id/tvcolor"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="TDC HOTEL" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Mã HĐ: XX23" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Khách hàng: Nguyễn Văn A" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="SĐT:0347249777" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Tên phòng" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvnhanphong"
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Nhận phòng"
+                    android:textStyle="normal" />
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_toRightOf="@+id/tvnhanphong"
+                    android:gravity="end"
+                    android:text="22H 20/03/2023"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvtraphong"
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Trả phòng"
+                    android:textStyle="normal" />
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_toRightOf="@+id/tvtraphong"
+                    android:gravity="end"
+                    android:text="16H 22/03/2023"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvtienphong"
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Tiền phòng"
+                    android:textStyle="normal" />
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_toRightOf="@+id/tvtienphong"
+                    android:gravity="end"
+                    android:text="3.738.000đ"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Tiện nghi phòng" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="\u2022  View Biển\n\u2022  2 giường ngủ\n\u2022  1 phòng tắm\n\u2022  Bồn tắm riêng\n\u2022  TiVi\n\u2022  Điều hòa"
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Các dịch vụ" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="\u2022  GYM: 89.000 x2\n\u2022  SPA: 89.000 x2\n\u2022  MASSAGE: 89.000 x2\n\u2022  BUFFET: 89.000 x2"
+                android:textStyle="normal" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvtongtien"
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="TỔNG HÓA ĐƠN: "
+                    android:textStyle="normal" />
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_toRightOf="@+id/tvtongtien"
+                    android:gravity="end"
+                    android:text="4.090.000đ"
+                    android:textStyle="normal" />
+            </RelativeLayout>
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="YÊU CẦU CỌC(50% tiền phòng): 1.369.000đ" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:text="*Nếu quá 30% thời gian mà khách hàng không đến nhận phòng sẽ mất cọc."
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Ngày tạo hóa đơn: 08/10/2023"
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="TDC HOTEL luôn chào đón bạn!!!!"
+                android:textStyle="normal" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:text="Liên hệ: 0347575666 - 0877508117"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvThanhtoan"
+            style="@style/tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Vui lòng chọn phương thức thanh toán"
+            android:layout_below="@id/tvcolor"/>
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radio"
+            android:layout_below="@id/tvThanhtoan"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <RadioButton
+                android:id="@+id/radTiencoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tiền cọc"
+                android:layout_marginRight="20dp"
+                android:textSize="20dp"/>
+            <RadioButton
+                android:id="@+id/radToanbohoadon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toàn bộ hóa đơn"
+                android:textSize="20dp"/>
+        </RadioGroup>
+        <ImageView
+            android:id="@+id/ivMomopay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radio"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/momo_pay" />
+
+        <ImageView
+            android:id="@+id/ivBank"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ivMomopay"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/bank_pay" />
+
+    </RelativeLayout>
+
+</ScrollView>

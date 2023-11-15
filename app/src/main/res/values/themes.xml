@@ -1,0 +1,75 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.TDC_HOTEL" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.TDC_HOTEL" parent="Base.Theme.TDC_HOTEL" />
+
+    <style name="MyRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:colorControlNormal">#C5C5C5</item>
+        <item name="android:colorControlActivated">#FFEB3B</item>
+    </style>
+
+    <style name="logo">
+        <item name="android:layout_marginTop">100dp</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="title">
+        <item name="android:textSize">30dp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">25dp</item>
+    </style>
+
+    <style name="title_screen">
+        <item name="android:textSize">25dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:background">@color/blue_2</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+    <style name="edt">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:background">@drawable/edt</item>
+    </style>
+
+    <style name="btn">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:padding">15dp</item>
+        <item name="android:background">@drawable/btn</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="back">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:src">@drawable/back_blue</item>
+    </style>
+
+    <style name="tv">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="rev_item">
+        <item name="android:padding">20dp</item>
+        <item name="android:background">@drawable/rev</item>
+    </style>
+
+</resources>

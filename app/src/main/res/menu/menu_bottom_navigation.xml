@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_timkiem"
+        android:icon="@drawable/menu_timkiem"
+        android:title="Tìm kiếm" />
+    <item
+        android:id="@+id/menu_daluu"
+        android:icon="@drawable/menu_daluu"
+        android:title="Đã lưu"
+
+        />
+    <item
+        android:id="@+id/menu_datcho"
+        android:icon="@drawable/menu_datcho"
+        android:title="Đặt chỗ" />
+    <item
+        android:id="@+id/menu_taikhoan"
+        android:icon="@drawable/menu_taikhoan"
+        android:title="Tài khoản"
+        />
+</menu>

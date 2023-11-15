@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="20dp"
+    >
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/phong_example"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTenphong"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên phòng" />
+
+            <TextView
+
+                style="@style/tv"
+                android:layout_width="65dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:drawableEnd="@drawable/star"
+                android:text="5.0"
+                android:textStyle="normal" />
+        </RelativeLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/tv"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            android:text="Tổng thanh toán: 4.090.000đ\n12h 20/03/2023 - 16h 22/03/2023"/>
+        <Button
+            android:id="@+id/btnDanhgia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/btn"
+            android:padding="0dp"
+            android:textSize="15dp"
+            android:text="Viết đánh giá"
+            android:layout_marginRight="5dp"/>
+    </LinearLayout>
+</LinearLayout>

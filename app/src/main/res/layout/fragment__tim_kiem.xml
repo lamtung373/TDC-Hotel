@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment_Menu.Fragment_TimKiem">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvxinchao"
+            style="@style/title_screen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Xin chào, Lâm Tùng" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@drawable/list_item"
+            android:elevation="5dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thời gian nhận" />
+
+                    <Button
+                        android:id="@+id/btn_thoigiannhan"
+                        style="@style/btn"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_date"
+                        android:drawableLeft="@drawable/date"
+                        android:text="01/01/1111 00:00"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/tv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Thời gian trả" />
+
+                    <Button
+                        style="@style/btn"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/btn_date"
+                        android:drawableLeft="@drawable/date"
+                        android:text="01/01/1111 00:00"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Spinner
+                android:id="@+id/spTimkiem"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnTimkiem"
+                style="@style/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tìm" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh sách phòng nhiều lượt thuê nhất:"
+                android:layout_marginLeft="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvLuotthue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh sách phòng đánh giá tốt nhất:"
+                android:layout_marginLeft="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvDanhgia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Danh sách phòng giá tốt nhất:"
+                android:layout_marginLeft="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvGia"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
