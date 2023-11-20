@@ -32,6 +32,7 @@
                 android:text="THÔNG TIN CÁ NHÂN" />
 
             <ImageView
+                android:id="@+id/imgvProfile"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_below="@+id/title"
@@ -51,6 +52,7 @@
             android:text="Tên" />
 
         <TextView
+            android:id="@+id/edtTen"
             style="@style/edt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,29 +69,15 @@
             android:text="Số điện thoại" />
 
         <TextView
+            android:id="@+id/edtSDT"
             style="@style/edt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0123456789"
             android:layout_marginBottom="0dp"/>
 
-        <TextView
-            style="@style/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Email" />
-
-        <EditText
-            style="@style/edt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
-            android:layout_marginBottom="0dp"/>
         <Button
-            android:id="@+id/btntieptuc"
+            android:id="@+id/btnDangXuat"
             style="@style/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
