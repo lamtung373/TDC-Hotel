@@ -8,7 +8,6 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.KQ_TimKiem_Adapter;
 import com.example.tdc_hotel.R;
 
 public class HoanTat_Adapter extends RecyclerView.Adapter<HoanTat_Adapter.HoanTat_Holder>{

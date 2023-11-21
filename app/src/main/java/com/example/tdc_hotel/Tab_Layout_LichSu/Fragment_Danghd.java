@@ -71,11 +71,11 @@ public class Fragment_Danghd extends Fragment {
         return view;
     }
     private void Initialization() {
-        Adapter_ketQuaTimKiem kq_timKiem_adapter=new Adapter_ketQuaTimKiem();
+        //Adapter_ketQuaTimKiem kq_timKiem_adapter=new Adapter_ketQuaTimKiem();
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
         rcvPhong.addItemDecoration(dividerItemDecoration);
         rcvPhong.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        rcvPhong.setAdapter(kq_timKiem_adapter);
+       // rcvPhong.setAdapter(kq_timKiem_adapter);
     }
     private void setControl(View view) {
         rcvPhong = view.findViewById(R.id.rcvPhong);
