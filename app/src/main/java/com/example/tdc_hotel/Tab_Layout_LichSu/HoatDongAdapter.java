@@ -1,20 +1,19 @@
 package com.example.tdc_hotel.Tab_Layout_LichSu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+import com.example.tdc_hotel.Danh_Gia;
 import com.example.tdc_hotel.Model.hoa_don;
-import com.example.tdc_hotel.Model.khach_hang;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.R;
 import com.squareup.picasso.Picasso;
@@ -22,25 +21,25 @@ import com.squareup.picasso.Picasso;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class DaDatAdapter extends RecyclerView.Adapter<DaDatAdapter.DaDatViewHolder>{
+public class HoatDongAdapter extends RecyclerView.Adapter<HoatDongAdapter.HoatDongViewHolder>{
     private List<hoa_don> hoaDonList;
     private List<phong> phongList;
-    @NonNull
-    @Override
-    public DaDatViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_da_dat,parent,false);
-        return new DaDatViewHolder(view);
-    }
-
     Context context;
-    public DaDatAdapter(List<hoa_don> hoaDonList, List<phong> phongList, Context context) {
+    public HoatDongAdapter(List<hoa_don> hoaDonList, List<phong> phongList, Context context) {
         this.hoaDonList = hoaDonList;
         this.phongList = phongList;
         this.context = context;
     }
 
+    @NonNull
     @Override
-    public void onBindViewHolder(@NonNull DaDatViewHolder holder, int position) {
+    public HoatDongViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_da_dat,parent,false);
+        return new HoatDongAdapter.HoatDongViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull HoatDongViewHolder holder, int position) {
         hoa_don hoaDon  = hoaDonList.get(position);
         if(hoaDon==null)
         {
@@ -63,29 +62,35 @@ public class DaDatAdapter extends RecyclerView.Adapter<DaDatAdapter.DaDatViewHol
                 break;
             }
         }
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               Intent intent=new Intent(context, Danh_Gia.class);
+               context.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         if(hoaDonList != null)
         {
-            Log.e("be",hoaDonList.size()+"s");
             return  hoaDonList.size();
 
         }
         return 0;
     }
 
-    class DaDatViewHolder extends RecyclerView.ViewHolder
+    class HoatDongViewHolder extends RecyclerView.ViewHolder
     {
         TextView tvTenphong, tvMota;
         ImageView ivPhong;
-        public DaDatViewHolder(@NonNull View itemView) {
+        public HoatDongViewHolder(@NonNull View itemView) {
             super(itemView);
             ivPhong = itemView.findViewById(R.id.ivPhong);
             tvTenphong = itemView.findViewById(R.id.tvTenphong);
             tvMota = itemView.findViewById(R.id.tvMota);
         }
+
     }
 }
