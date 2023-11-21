@@ -1,129 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Fragment_Menu.ChiTiet_Phong.Hoan_Tat_Thongtin_DatPhong">
+    android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!--        <TextView-->
-        <!--            android:layout_width="50dp"-->
-        <!--            android:layout_height="5dp"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:layout_marginTop="10dp"-->
-        <!--            android:background="@color/grey_datetime"-->
-        <!--            android:text=" " />-->
         <RelativeLayout
+            android:id="@+id/rl_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:id="@+id/tvcolor"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/blue_2" />
-
-            <ImageView
-                android:id="@+id/ivback"
-                style="@style/back"
-                android:src="@drawable/back_white" />
+            android:layout_height="wrap_content"
+            android:background="@color/blue_2"
+            android:padding="10dp">
 
             <TextView
-                android:id="@+id/rltiv"
-                style="@style/title_screen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:padding="0dp"
-                android:text="HOÀN TẤT THÔNG TIN" />
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Chọn dịch vụ"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
+            <ImageButton
+                android:id="@+id/img_Back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:background="@null"
+                android:src="@drawable/back_white" />
         </RelativeLayout>
-
-
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thời gian nhận"
-                    android:textSize="25dp"/>
-
-                <Button
-                    style="@style/btn"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_date"
-                    android:drawableLeft="@drawable/date"
-                    android:text="01/01/1111 00:00"
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thời gian trả"
-                    android:textSize="25dp"/>
-
-                <Button
-                    style="@style/btn"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/btn_date"
-                    android:drawableLeft="@drawable/date"
-                    android:text="01/01/1111 00:00"
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
-            </LinearLayout>
-        </LinearLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="Nhận phòng"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/btnNgayNhan"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_date"
+                    android:drawableLeft="@drawable/date"
+                    android:padding="10dp"
+                    android:text="01/01/1111"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="10dp"
+                    android:text="Trả phòng"
+                    android:textSize="18dp" />
+
+                <Button
+                    android:id="@+id/btnNgayTra"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/btn_date"
+                    android:drawableLeft="@drawable/date"
+                    android:padding="10dp"
+                    android:text="01/01/1111"
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
-                android:id="@+id/tvsonguoi"
                 style="@style/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Số người"
-                android:textSize="25dp"/>
+                android:text="Số lượng khách"
+                android:textSize="18dp" />
 
             <ImageView
                 android:id="@+id/ivTru"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/edtSonguoi"
+                android:layout_marginRight="80dp"
+                android:layout_toLeftOf="@id/ivCong"
                 android:src="@drawable/tru" />
 
             <EditText
@@ -134,7 +132,9 @@
                 android:layout_marginLeft="25dp"
                 android:layout_marginRight="25dp"
                 android:layout_toLeftOf="@id/ivCong"
-                android:text="10" />
+                android:inputType="number"
+                android:text="0"
+                android:textStyle="normal" />
 
             <ImageView
                 android:id="@+id/ivCong"
@@ -142,53 +142,53 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginRight="40dp"
                 android:src="@drawable/cong" />
         </RelativeLayout>
 
+        <TextView
+            style="@style/tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="10dp"
+            android:text="Dịch Vụ - Phòng"
+            android:textSize="18dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_dvphong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp" />
 
         <TextView
             style="@style/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginBottom="10dp"
-            android:text="Dịch vụ phòng"
-            android:textSize="25dp"/>
+            android:text="Dịch Vụ Theo Người"
+            android:textSize="18dp" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvDichvu_phong"
+            android:id="@+id/rcv_dvtheonguoi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp" />
-
-
-        <TextView
-            style="@style/tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
-            android:text="Dịch vụ theo người"
-            android:textSize="25dp"/>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcvDichvu_theonguoi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp" />
-
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp" />
 
         <Button
-            android:id="@+id/btnTienhanhthanhtoan"
+            android:id="@+id/btnXacNhanDV"
             style="@style/btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:layout_marginBottom="50dp"
+            android:background="@drawable/btn"
             android:text="Tiến hành thanh toán" />
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

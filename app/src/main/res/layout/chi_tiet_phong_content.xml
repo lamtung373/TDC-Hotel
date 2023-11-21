@@ -12,41 +12,44 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp">
 
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/tvcolor"
+            <RelativeLayout
+                android:id="@+id/rl_title"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@color/blue_2" />
-
-            <ImageView
-                android:id="@+id/ivback"
-                style="@style/back"
-                android:src="@drawable/back_white" />
-
-            <TextView
-                android:id="@+id/rltiv"
-                style="@style/title_screen"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="10dp"
-                android:padding="0dp"
-                android:text="THÔNG TIN PHÒNG" />
+                android:background="@color/blue_2"
+                android:padding="10dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Thông tin phòng"
+                    android:textColor="@color/white"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/img_Back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:src="@drawable/back_white"
+                    android:layout_centerVertical="true"/>
+            </RelativeLayout>
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/vpiv"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
-                android:layout_below="@+id/tvcolor"
+                android:layout_below="@+id/rl_title"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
@@ -69,30 +72,30 @@
                 android:orientation="horizontal">
 
                 <ImageView
+                    android:id="@+id/iv_heart"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/heart_white" />
+                    android:layout_marginLeft="10dp" />
 
                 <TextView
+                    android:id="@+id/tv_tenphong"
                     style="@style/tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:text="Tên phòng" />
+                    android:layout_marginLeft="10dp" />
             </LinearLayout>
 
             <TextView
-
+                android:id="@+id/tv_danhgia"
                 style="@style/tv"
-                android:layout_width="65dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vpiv"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="20dp"
                 android:drawableEnd="@drawable/star"
-                android:text="5.0"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:textSize="15dp"/>
         </RelativeLayout>
 
         <TextView
@@ -101,7 +104,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="90.000đ/h"
             android:textSize="15dp"
             android:textStyle="normal" />
 
@@ -110,22 +112,22 @@
             style="@style/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="89.000đ/h" />
+            android:layout_marginLeft="10dp" />
 
         <TextView
             style="@style/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Tiện nghi phòng" />
+            android:text="Tiện nghi phòng"
+            android:layout_marginTop="10dp"/>
 
         <TextView
+            android:id="@+id/tv_tiennghi"
             style="@style/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
-            android:text="\u2022  View Biển \n\u2022  2 giường ngủ\n\u2022  1 phòng tắm\n\u2022  Bồn tắm riêng\n\u2022  TiVi\n\u2022  Điều hòa"
             android:textSize="15dp"
             android:textStyle="normal" />
 
@@ -137,11 +139,11 @@
             android:text="Mô tả" />
 
         <TextView
+            android:id="@+id/tv_mota"
             style="@style/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="Khi bước vào phòng, bạn sẽ cảm nhận được sự sang trọng và ấm cúng. Tường phòng được sơn màu trắng tinh tế, kết hợp với nội thất gỗ màu nâu trầm tạo nên một không gian hài hòa và trang nhã.\nGiường ngủ là điểm nhấn của phòng, với kích thước lớn và đệm mềm mại. Bàn làm việc được đặt cạnh cửa sổ, thuận tiện cho bạn làm việc hoặc giải trí. Tủ quần áo rộng rãi có thể chứa được nhiều đồ đạc.\nPhòng tắm được thiết kế hiện đại với bồn tắm và vòi sen riêng biệt. Các đồ dùng vệ sinh cá nhân được cung cấp đầy đủ."
             android:textSize="15dp"
             android:textStyle="normal" />
 
@@ -152,10 +154,13 @@
         <Button
             android:id="@+id/btnDatphong"
             style="@style/btn"
-            android:layout_width="wrap_content"
+            android:background="@drawable/btn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginBottom="50dp"
-            android:text="Đặt phòng" />
+            android:text="Đặt phòng"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
     </LinearLayout>
 </ScrollView>
