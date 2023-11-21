@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
     android:layout_marginTop="20dp"
-    >
-<ImageView
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:src="@drawable/phong_example"/>
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_pictureFinding"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/phong_example" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvTenphong"
+                android:id="@+id/tvTenphongFinding"
                 style="@style/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên phòng" />
 
             <TextView
-
+                android:id="@+id/tv_ratting"
                 style="@style/tv"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
@@ -39,11 +42,11 @@
 
 
         <TextView
+            style="@style/tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/tv"
+            android:text="4 đánh giá\n100 lượt thuê\n80m²: 2 phòng tắm - 2 phòng ngủ\n80.000đ/giờ"
             android:textSize="15dp"
-            android:textStyle="normal"
-            android:text="4 đánh giá\n100 lượt thuê\n80m²: 2 phòng tắm - 2 phòng ngủ\n80.000đ/giờ"/>
+            android:textStyle="normal" />
     </LinearLayout>
 </LinearLayout>

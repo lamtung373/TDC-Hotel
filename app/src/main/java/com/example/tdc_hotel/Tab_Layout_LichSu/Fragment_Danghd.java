@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.KQ_TimKiem_Adapter;
+import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.Adapter_ketQuaTimKiem;
 import com.example.tdc_hotel.R;
 
 /**
@@ -71,7 +71,7 @@ public class Fragment_Danghd extends Fragment {
         return view;
     }
     private void Initialization() {
-        KQ_TimKiem_Adapter kq_timKiem_adapter=new KQ_TimKiem_Adapter();
+        Adapter_ketQuaTimKiem kq_timKiem_adapter=new Adapter_ketQuaTimKiem();
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
         rcvPhong.addItemDecoration(dividerItemDecoration);
         rcvPhong.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
