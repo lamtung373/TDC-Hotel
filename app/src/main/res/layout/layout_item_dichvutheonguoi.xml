@@ -3,43 +3,39 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp">
+
     <TextView
-        android:id="@+id/tvloaidichvu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/tv"
-        android:text="Spa"
-        android:layout_marginRight="30dp"
-        android:layout_centerVertical="true"
-        />
-    <TextView
-        android:id="@+id/tvGiacu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="@style/tv"
-        android:text="90000đ/người"
-        android:layout_toRightOf="@id/tvloaidichvu"
-        android:textSize="15dp"
         android:textStyle="normal"
-        />
+        android:id="@+id/tvdichvu"
+        style="@style/tv"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:text="Spa" />
+
     <TextView
-        android:id="@+id/tvGiamoi"
+        android:textStyle="normal"
+        android:id="@+id/tvGia"
+        style="@style/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/tv"
-        android:text="89000đ/người"
-        android:layout_below="@id/tvGiacu"
-        android:layout_toRightOf="@id/tvloaidichvu"
-        />
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/tvdichvu"
+        android:text="89000đ/người" />
+
     <ImageView
         android:id="@+id/ivTru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/edtSonguoi"
+        android:layout_toLeftOf="@id/ivCong"
+        android:layout_marginRight="80dp"
         android:src="@drawable/tru" />
 
     <EditText
+        android:inputType="number"
+        android:textStyle="normal"
         android:id="@+id/edtSonguoi"
         style="@style/tv"
         android:layout_width="wrap_content"
@@ -47,7 +43,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_toLeftOf="@id/ivCong"
-        android:text="10" />
+        android:text="0" />
 
     <ImageView
         android:id="@+id/ivCong"
