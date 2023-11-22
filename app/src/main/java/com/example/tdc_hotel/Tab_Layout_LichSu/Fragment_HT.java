@@ -143,7 +143,7 @@ public class Fragment_HT extends Fragment {
         LoadHoaDon();
         LoadPhong();
 
-        daDatAdapter = new HoanTatAdapter(hoaDonList,phongList);
+        daDatAdapter = new HoanTatAdapter(hoaDonList,phongList,getActivity());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvPhong.setLayoutManager(linearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
