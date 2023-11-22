@@ -21,7 +21,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:drawableStart="@drawable/back_black"
-        android:text="12H 20/03/2023 - 16H 22/03/2023  phòng 2..."
+        android:hint="start-end-roomtype"
         android:textSize="15dp"
         android:textColor="@color/black"/>
     <Spinner
@@ -35,7 +35,7 @@
         android:layout_marginBottom="10dp"
         />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rcvPhong"
+        android:id="@+id/rcvPhong_finding"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/spSapxep"
