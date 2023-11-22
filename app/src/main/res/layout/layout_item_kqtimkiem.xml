@@ -1,33 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp"
     android:layout_marginTop="20dp"
-    >
-<ImageView
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:src="@drawable/phong_example"/>
+    android:layout_marginBottom="10dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/iv_pictureFinding"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/phong_example" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp">
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/tvTenphong"
+                android:id="@+id/tvTenphongFinding"
                 style="@style/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên phòng" />
 
             <TextView
-
+                android:id="@+id/tv_ratting"
                 style="@style/tv"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
@@ -37,13 +40,53 @@
                 android:textStyle="normal" />
         </RelativeLayout>
 
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/tv"
-            android:textSize="15dp"
-            android:textStyle="normal"
-            android:text="4 đánh giá\n100 lượt thuê\n80m²: 2 phòng tắm - 2 phòng ngủ\n80.000đ/giờ"/>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_soluongdanhgia"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="4 đánh giá"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_luotThue"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="100 lượt thuê"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_tiennghi"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:hint="80m²: 2 phòng tắm - 2 phòng ngủ"
+                android:maxLines="1"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/tv_giaphong"
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="80.000đ/giờ"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:textStyle="normal" />
+
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

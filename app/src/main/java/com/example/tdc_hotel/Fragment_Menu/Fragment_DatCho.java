@@ -3,8 +3,6 @@ package com.example.tdc_hotel.Fragment_Menu;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.ViewPager2;
 
@@ -12,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.KQ_TimKiem_Adapter;
 import com.example.tdc_hotel.R;
 import com.example.tdc_hotel.Tab_Layout_LichSu.Tab_Layout_Adapter;
 import com.google.android.material.tabs.TabLayout;

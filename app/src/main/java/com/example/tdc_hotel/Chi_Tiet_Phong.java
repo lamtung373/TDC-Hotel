@@ -3,10 +3,6 @@ package com.example.tdc_hotel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -17,25 +13,18 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.Bottom_Sheet_Fragment;
-import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.DichVuPhong_Adapter;
-import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.DichVuTheoNguoi_Adapter;
 import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.Hoan_Tat_Thongtin_DatPhong;
-import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.KQ_TimKiem_Adapter;
 import com.example.tdc_hotel.Model.chi_tiet_tien_nghi;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.Model.tien_nghi;
 import com.example.tdc_hotel.Model.yeu_thich;
 import com.example.tdc_hotel.Photo.Photo_Adapter;
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -50,7 +39,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
-import me.relex.circleindicator.CircleIndicator3;
 
 public class Chi_Tiet_Phong extends AppCompatActivity {
     ViewPager2 vpiv;
