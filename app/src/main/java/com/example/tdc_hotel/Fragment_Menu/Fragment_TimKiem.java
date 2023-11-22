@@ -21,6 +21,7 @@ import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.Hoan_Tat_Thongtin_DatPhong;
 import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.Ket_Qua_Tim_Kiem;
 import com.example.tdc_hotel.Fragment_Menu.TimKiem.DanhGia_Adapter;
 import com.example.tdc_hotel.Fragment_Menu.TimKiem.Gia_Adapter;
@@ -30,6 +31,7 @@ import com.example.tdc_hotel.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -83,7 +85,7 @@ public class Fragment_TimKiem extends Fragment {
     Spinner spRoomType;
     ArrayList<String> typeRoomList = new ArrayList<>();
     private String getLoaiPhong = null;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -119,7 +121,7 @@ public class Fragment_TimKiem extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.e("sploaiphong", getLoaiPhong + btn_thoigiannhan.getText() + btn_thoigiantra.getText());
-                if (thoiGianNhan != null && thoiGianTra != null&& getLoaiPhong!=null) {
+                if (thoiGianNhan != null && thoiGianTra != null && getLoaiPhong != null) {
                     Intent intent = new Intent(getActivity(), Ket_Qua_Tim_Kiem.class);
                     intent.putExtra("ngayNhan", thoiGianNhan);
                     intent.putExtra("ngayTra", thoiGianTra);
@@ -138,34 +140,32 @@ public class Fragment_TimKiem extends Fragment {
         btn_thoigiannhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Calendar currentCalendar = Calendar.getInstance();
-                final Calendar selectedCalendar = Calendar.getInstance();
+                Calendar calendar = Calendar.getInstance();
+                final Calendar today = Calendar.getInstance();
+                today.set(Calendar.HOUR_OF_DAY, 0);
+                today.set(Calendar.MINUTE, 0);
+                today.set(Calendar.SECOND, 0);
+                today.set(Calendar.MILLISECOND, 0);
+
                 DatePickerDialog.OnDateSetListener dataListener = new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        selectedCalendar.set(year, month, dayOfMonth);
-                        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                selectedCalendar.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                                selectedCalendar.set(Calendar.MINUTE, minute);
+                        calendar.set(Calendar.YEAR, year);
+                        calendar.set(Calendar.MONTH, month);
+                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-                                // Kiểm tra ngày và thời gian được chọn có sau (hoặc bằng) ngày và thời gian hiện tại không
-                                if (!selectedCalendar.before(currentCalendar)) {
-                                    btn_thoigiannhan.setText(dateFormat.format(selectedCalendar.getTime()));
-                                } else {
-                                    // Hiển thị thông báo lỗi nếu ngày và thời gian được chọn không hợp lệ
-                                    Toast.makeText(getActivity(), "Vui lòng chọn một thời gian từ bây giờ trở đi.", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        };
-                        new TimePickerDialog(getActivity(), timeSetListener, selectedCalendar.get(Calendar.HOUR_OF_DAY), selectedCalendar.get(Calendar.MINUTE), true).show();
+                        if (calendar.before(today)) {
+                            Toast.makeText(getActivity(), "Thời gian nhận phòng phải ít nhất phải bắt đầu từ hôm nay.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                        btn_thoigiannhan.setText(dateFormat.format(calendar.getTime()));
                     }
                 };
-                new DatePickerDialog(getActivity(), dataListener, currentCalendar.get(Calendar.YEAR), currentCalendar.get(Calendar.MONTH), currentCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                new DatePickerDialog(getActivity(), dataListener, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
     }
+
 
     void ChonThoiGianTra() {
         btn_thoigiantra.setOnClickListener(new View.OnClickListener() {
@@ -194,22 +194,15 @@ public class Fragment_TimKiem extends Fragment {
                         calendarTra.set(Calendar.YEAR, year);
                         calendarTra.set(Calendar.MONTH, month);
                         calendarTra.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-
-                        TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener() {
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                calendarTra.set(Calendar.HOUR_OF_DAY, hourOfDay);
-                                calendarTra.set(Calendar.MINUTE, minute);
-
-                                if (!calendarTra.after(calendarNhan)) {
-                                    Toast.makeText(getActivity(), "Thời gian trả phòng phải sau thời gian nhận phòng.", Toast.LENGTH_SHORT).show();
-                                    return;
-                                }
-
-                                btn_thoigiantra.setText(dateFormat.format(calendarTra.getTime()));
-                            }
-                        };
-                        new TimePickerDialog(getActivity(), timeSetListener, calendarTra.get(Calendar.HOUR_OF_DAY), calendarTra.get(Calendar.MINUTE), false).show();
+                        if (btn_thoigiantra.getText().toString().equals(btn_thoigiannhan.getText())) {
+                            Toast.makeText(getActivity(), "Thời gian trả phòng phải sau ngày nhận phòng ít nhất 1 ngày", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else if (calendarTra.before(Calendar.getInstance())) {
+                            Toast.makeText(getActivity(), "Thời gian trả phòng phải sau thời gian hiện tại.", Toast.LENGTH_SHORT).show();
+                            return;
+                        } else {
+                            btn_thoigiantra.setText(dateFormat.format(calendarTra.getTime()));
+                        }
                     }
                 };
                 new DatePickerDialog(getActivity(), dataListener, calendarTra.get(Calendar.YEAR), calendarTra.get(Calendar.MONTH), calendarTra.get(Calendar.DAY_OF_MONTH)).show();
