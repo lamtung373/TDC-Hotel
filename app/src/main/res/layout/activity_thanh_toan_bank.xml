@@ -16,7 +16,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/ivback"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:text="Vui lòng thanh toán số tiền 1.369.000đ qua tài khoản của chúng tôi qua mã QR cùng nội dung “XXX23”"
         android:textSize="15dp"
         android:textStyle="normal" />
@@ -37,8 +40,10 @@
         android:layout_below="@id/qr"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Ngân hàng: ABC"
         android:textStyle="normal" />
+
     <TextView
         android:id="@+id/chinhanh"
         style="@style/tv"
@@ -47,8 +52,10 @@
         android:layout_below="@id/bank"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Chi nhánh: ..."
         android:textStyle="normal" />
+
     <TextView
         android:id="@+id/chutk"
         style="@style/tv"
@@ -57,6 +64,7 @@
         android:layout_below="@id/chinhanh"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Chủ tài khoản: Nguyễn Văn A"
         android:textStyle="normal" />
 
@@ -67,6 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/chutk"
         android:layout_marginLeft="20dp"
+        android:layout_marginBottom="10dp"
         android:text="Số tài khoản: "
         android:textStyle="normal" />
 
@@ -96,8 +105,19 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/stk"
         android:layout_marginLeft="20dp"
+        android:text="Số tiền: "
+        android:textStyle="normal"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/tv_sotien"
+        style="@style/tv"
+        android:layout_width="155dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stk"
         android:layout_marginRight="20dp"
-        android:text="Số tiền: 1.369.000đ"
+        android:layout_toRightOf="@+id/sotien"
+        android:text="12356"
         android:textStyle="normal" />
 
     <TextView
@@ -128,9 +148,15 @@
         android:layout_below="@id/sotien"
         android:layout_toRightOf="@id/tvNd"
         android:src="@drawable/copy" />
-
+<ProgressBar
+    android:id="@+id/pb"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_below="@id/ivCopy_nd"
+    android:visibility="gone"/>
     <Button
-        android:id="@+id/btndatphong"
+        android:id="@+id/btn_thanhtoan"
         style="@style/btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -139,5 +165,5 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp"
-        android:text="Quay về trang chủ" />
+        android:text="Xác nhận thanh toán" />
 </RelativeLayout>
