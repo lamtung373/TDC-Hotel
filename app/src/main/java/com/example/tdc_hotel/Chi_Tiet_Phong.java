@@ -39,6 +39,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
+import me.relex.circleindicator.CircleIndicator3;
 
 public class Chi_Tiet_Phong extends AppCompatActivity {
     ViewPager2 vpiv;
