@@ -31,7 +31,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import me.relex.circleindicator.CircleIndicator3;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
+
+import me.relex.circleindicator.CircleIndicator;
 
 public class Chi_Tiet_Phong extends AppCompatActivity {
     ViewPager2 vpiv;
@@ -53,15 +60,14 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
     }
 
     private void setEvent() {
-        String id_kh="123";
-        DatabaseReference reference_yeuthich=FirebaseDatabase.getInstance().getReference("yeu_thich");
+        String id_kh = "123";
+        DatabaseReference reference_yeuthich = FirebaseDatabase.getInstance().getReference("yeu_thich");
         reference_yeuthich.child(id_kh).child("-Nj83mHkf60DbzdG20ai").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists()){
+                if (snapshot.exists()) {
                     iv_heart.setImageResource(R.drawable.heart_red);
-                }
-                else {
+                } else {
                     iv_heart.setImageResource(R.drawable.heart_black);
                 }
             }
@@ -91,7 +97,7 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
 
                     } else {
                         iv_heart.setImageResource(R.drawable.heart_red);
-                        yeu_thich yeuThich=new yeu_thich(id_kh,phong.getId_phong());
+                        yeu_thich yeuThich = new yeu_thich(id_kh, phong.getId_phong());
                         reference_yeuthich.child(id_kh).child(phong.getId_phong()).setValue(yeuThich, new DatabaseReference.CompletionListener() {
                             @Override
                             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -132,6 +138,7 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
                     Photo_Adapter adapter = new Photo_Adapter(phong.getAnh_phong());
                     vpiv.setAdapter(adapter);
                     ci.setViewPager(vpiv);
+                    AutoSlideImage();
                 }
                 //Tao hieu ung khi chuyen anh
                 vpiv.setOffscreenPageLimit(3);
