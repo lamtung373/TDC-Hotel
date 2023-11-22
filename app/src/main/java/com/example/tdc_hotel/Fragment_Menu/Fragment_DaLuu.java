@@ -13,7 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.KQ_TimKiem_Adapter;
+import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.Adapter_ketQuaTimKiem;
 import com.example.tdc_hotel.R;
 
 import java.util.ArrayList;
@@ -77,11 +77,11 @@ public class Fragment_DaLuu extends Fragment {
         return view;
     }
     private void Initialization() {
-        KQ_TimKiem_Adapter kq_timKiem_adapter=new KQ_TimKiem_Adapter();
+      //  Adapter_ketQuaTimKiem kq_timKiem_adapter=new Adapter_ketQuaTimKiem();
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
         rcvPhong.addItemDecoration(dividerItemDecoration);
         rcvPhong.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        rcvPhong.setAdapter(kq_timKiem_adapter);
+        //rcvPhong.setAdapter(kq_timKiem_adapter);
         arrForspTimkiem.add("Tăng dần theo giá");
         arrForspTimkiem.add("Giảm dần theo giá");
         arrForspTimkiem.add("Tăng dần theo đánh giá sao");
@@ -90,6 +90,6 @@ public class Fragment_DaLuu extends Fragment {
     }
     private void setControl(View view) {
         rcvPhong = view.findViewById(R.id.rcvPhong);
-        spTimkiem=view.findViewById(R.id.spTimkiem);
+        spTimkiem=view.findViewById(R.id.spRoomType);
     }
 }

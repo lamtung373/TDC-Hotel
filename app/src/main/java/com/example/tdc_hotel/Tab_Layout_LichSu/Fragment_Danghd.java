@@ -13,6 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.Adapter_ketQuaTimKiem;
+import com.example.tdc_hotel.Model.hoa_don;
+import com.example.tdc_hotel.Model.khach_hang;
+import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -83,11 +86,11 @@ public class Fragment_Danghd extends Fragment {
         return view;
     }
     private void Initialization() {
-        Adapter_ketQuaTimKiem kq_timKiem_adapter=new Adapter_ketQuaTimKiem();
+        //Adapter_ketQuaTimKiem kq_timKiem_adapter=new Adapter_ketQuaTimKiem();
         DividerItemDecoration dividerItemDecoration=new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
         rcvPhong.addItemDecoration(dividerItemDecoration);
         rcvPhong.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        rcvPhong.setAdapter(kq_timKiem_adapter);
+       // rcvPhong.setAdapter(kq_timKiem_adapter);
     }
     private void LoadHoaDon() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("hoa_don");
