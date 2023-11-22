@@ -3,6 +3,8 @@ package com.example.tdc_hotel;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
@@ -19,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.Adapter_Danhgia;
 import com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong.Hoan_Tat_Thongtin_DatPhong;
+import com.example.tdc_hotel.Fragment_Menu.TimKiem.Gia_Adapter;
 import com.example.tdc_hotel.Model.chi_tiet_tien_nghi;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.Model.tien_nghi;
@@ -39,10 +43,12 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import me.relex.circleindicator.CircleIndicator;
+import me.relex.circleindicator.CircleIndicator3;
 
 public class Chi_Tiet_Phong extends AppCompatActivity {
     ViewPager2 vpiv;
     ImageView iv_heart;
+    RecyclerView rcv_danhgia;
     CircleIndicator3 ci;
     Button btnDatphong;
     TextView tvGiacu, tv_tenphong, tvGiamoi, tv_tiennghi, tv_danhgia, tv_mota;
@@ -125,6 +131,9 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
     }
 
     private void Initialization() {
+        Adapter_Danhgia adapterDanhgia = new Adapter_Danhgia("-NikDVCyDCnyolyJj7DZ");
+        rcv_danhgia.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        rcv_danhgia.setAdapter(adapterDanhgia);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("phong").child(phong.getId_phong());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -291,6 +300,7 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
         tvGiamoi = findViewById(R.id.tvGiamoi);
         img_Back = findViewById(R.id.img_Back);
         iv_heart = findViewById(R.id.iv_heart);
+        rcv_danhgia = findViewById(R.id.rcv_danhgia);
 
     }
 }
