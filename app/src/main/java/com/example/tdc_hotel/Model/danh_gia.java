@@ -2,7 +2,22 @@ package com.example.tdc_hotel.Model;
 
 public class danh_gia {
     double  so_sao;
-    String id_danh_gia,id_phong,id_hoadon,so_dien_thoai,chi_tiet_danh_gia,thoi_gian;
+    String id_danh_gia;
+    String id_phong;
+    String id_hoadon;
+    String so_dien_thoai;
+    String chi_tiet_danh_gia;
+    String thoi_gian;
+
+    public String getTen_khach_hang() {
+        return ten_khach_hang;
+    }
+
+    public void setTen_khach_hang(String ten_khach_hang) {
+        this.ten_khach_hang = ten_khach_hang;
+    }
+
+    String ten_khach_hang;
 
     @Override
     public String toString() {
@@ -67,7 +82,7 @@ public class danh_gia {
         return so_sao;
     }
 
-    public void setSo_sao(int so_sao) {
+    public void setSo_sao(double so_sao) {
         this.so_sao = so_sao;
     }
 
