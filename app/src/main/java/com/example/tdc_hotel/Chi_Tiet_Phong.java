@@ -18,6 +18,7 @@ import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +55,7 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
     TextView tvGiacu, tv_tenphong, tvGiamoi, tv_tiennghi, tv_danhgia, tv_mota;
     ImageView img_Back;
     phong phong;
+    ProgressBar pb;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,8 +133,8 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
     }
 
     private void Initialization() {
-        Adapter_Danhgia adapterDanhgia = new Adapter_Danhgia("-NikDVCyDCnyolyJj7DZ");
-        rcv_danhgia.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        Adapter_Danhgia adapterDanhgia = new Adapter_Danhgia(phong.getId_phong(),pb,rcv_danhgia);
+        rcv_danhgia.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcv_danhgia.setAdapter(adapterDanhgia);
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("phong").child(phong.getId_phong());
         reference.addValueEventListener(new ValueEventListener() {
@@ -301,6 +303,7 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
         img_Back = findViewById(R.id.img_Back);
         iv_heart = findViewById(R.id.iv_heart);
         rcv_danhgia = findViewById(R.id.rcv_danhgia);
+        pb = findViewById(R.id.pb);
 
     }
 }

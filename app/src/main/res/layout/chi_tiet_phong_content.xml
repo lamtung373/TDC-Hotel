@@ -165,12 +165,20 @@
             android:background="@drawable/btn"
             android:text="Đặt phòng" />
 
+        <ProgressBar
+            android:id="@+id/pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="visible"/>
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rcv_danhgia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_marginBottom="50dp"/>
+            android:layout_marginBottom="50dp"
+            android:visibility="gone"/>
     </LinearLayout>
 </ScrollView>

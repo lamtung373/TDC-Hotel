@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,9 +24,13 @@ import java.util.ArrayList;
 public class Adapter_Danhgia extends RecyclerView.Adapter<Adapter_Danhgia.Danhgia_Holder> {
     String id_phong;
     ArrayList<danh_gia> data_danhgia = new ArrayList<>();
+    ProgressBar pb;
+    RecyclerView rcv_danhgia;
 
-    public Adapter_Danhgia(String id_phong) {
+    public Adapter_Danhgia(String id_phong, ProgressBar pb, RecyclerView rcv_danhgia) {
         this.id_phong = id_phong;
+        this.pb = pb;
+        this.rcv_danhgia = rcv_danhgia;
         Initialization();
     }
 
@@ -35,6 +40,7 @@ public class Adapter_Danhgia extends RecyclerView.Adapter<Adapter_Danhgia.Danhgi
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                data_danhgia.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     danh_gia danhGia = dataSnapshot.getValue(danh_gia.class);
                     reference_kh.child(danhGia.getSo_dien_thoai()).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -56,6 +62,8 @@ public class Adapter_Danhgia extends RecyclerView.Adapter<Adapter_Danhgia.Danhgi
                     });
                 }
                 notifyDataSetChanged();
+                pb.setVisibility(View.GONE);
+                rcv_danhgia.setVisibility(View.VISIBLE);
             }
 
             @Override
@@ -76,7 +84,14 @@ public class Adapter_Danhgia extends RecyclerView.Adapter<Adapter_Danhgia.Danhgi
         danh_gia danhGia=data_danhgia.get(holder.getAdapterPosition());
         holder.tv_ten.setText(danhGia.getTen_khach_hang());
         holder.tv_danhgia.setText(danhGia.getSo_sao()+"");
-        holder.tv_mota.setText(danhGia.getChi_tiet_danh_gia());
+        if(danhGia.getChi_tiet_danh_gia().equals("")){
+            holder.tv_mota.setVisibility(View.GONE);
+        }
+        else{
+            holder.tv_mota.setText(danhGia.getChi_tiet_danh_gia());
+            holder.tv_mota.setVisibility(View.VISIBLE);
+        }
+
         holder.tv_thoigian.setText(danhGia.getThoi_gian());
     }
 
