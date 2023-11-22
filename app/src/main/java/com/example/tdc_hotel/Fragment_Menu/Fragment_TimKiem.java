@@ -227,11 +227,11 @@ public class Fragment_TimKiem extends Fragment {
         rcvDanhgia.setAdapter(danhGia_adapter);
         rcvGia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvGia.setAdapter(gia_adapter);
-        typeRoomList.add("1 người");
-        typeRoomList.add("2 người");
-        typeRoomList.add("3 người");
-        typeRoomList.add("4 người");
-        typeRoomList.add("5 người");
+        typeRoomList.add("1 Người");
+        typeRoomList.add("2 Người");
+        typeRoomList.add("3 Người");
+        typeRoomList.add("4 Người");
+        typeRoomList.add("5 Người");
         spRoomType.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, typeRoomList));
     }
 
