@@ -56,8 +56,8 @@ public class Adapter_ketQuaTimKiem extends RecyclerView.Adapter<Adapter_ketQuaTi
         java.text.DecimalFormat formatter = new java.text.DecimalFormat("#");
         holder.tv_ratting.setText(String.valueOf(data.getDanh_gia_sao()));
         holder.tvTenphongFinding.setText(String.valueOf(data.getTen_phong()));
-        holder.tv_giaphong.setText(formatter.format(data.getGia())+" VNđ/đêm");
-        holder.tv_luotThue.setText(data.getLuot_thue()+" Đánh giá");
+        holder.tv_giaphong.setText(formatter.format(data.getGia()) + " VNđ/đêm");
+        holder.tv_luotThue.setText(data.getLuot_thue() + " Đánh giá");
     }
 
     @Override
@@ -69,7 +69,7 @@ public class Adapter_ketQuaTimKiem extends RecyclerView.Adapter<Adapter_ketQuaTi
     // ViewHolder cho RecyclerView
     public class KQ_TimKiem_Holder extends RecyclerView.ViewHolder {
         ImageView iv_pictureFinding;
-        TextView tvTenphongFinding, tv_ratting,tv_soluongdanhgia,tv_luotThue,tv_tiennghi,tv_giaphong;
+        TextView tvTenphongFinding, tv_ratting, tv_soluongdanhgia, tv_luotThue, tv_tiennghi, tv_giaphong;
 
         public KQ_TimKiem_Holder(@NonNull View itemView) {
             super(itemView);
@@ -148,10 +148,15 @@ public class Adapter_ketQuaTimKiem extends RecyclerView.Adapter<Adapter_ketQuaTi
             Date start_bill = dateFormat.parse(dateStart_bill);
             Date end_bill = dateFormat.parse(dateEnd_bill);
 
-            return !(newDate_Start.after(end_bill) || newDate_End.before(start_bill));
+            // Kiểm tra xem thời gian mới bắt đầu sau thời gian hóa đơn kết thúc
+            // hoặc thời gian mới kết thúc trước thời gian hóa đơn bắt đầu
+            if (newDate_Start.after(end_bill) && newDate_End.after(end_bill)) {
+                return true;
+            }else return false;
         } catch (ParseException e) {
             e.printStackTrace();
             return false;
         }
     }
+
 }
