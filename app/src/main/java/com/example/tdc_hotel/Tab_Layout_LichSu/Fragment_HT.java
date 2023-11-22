@@ -125,7 +125,7 @@ public class Fragment_HT extends Fragment {
         ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                hoaDonList.clear();
+                danhGiaList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                         danh_gia danhGia = dataSnapshot1.getValue(danh_gia.class);

@@ -103,7 +103,8 @@ public class Fragment_Dadat extends Fragment {
                         hoa_don hoaDon = dataSnapshot1.getValue(hoa_don.class);
 
                         if(!hoaDon.getThoi_gian_duyet().equals("")&&hoaDon.getSo_dien_thoai().toString().equals("0941108117")&&hoaDon.getCCCD().get(0).equals("")&&hoaDon.getCCCD().get(1).equals(""))
-                        {Log.e(hoaDon.getId_hoa_don(),"ddddd");
+                        {
+                            Log.e(hoaDon.getId_hoa_don(),"ddddd");
                             if(hoaDon.getThoi_gian_thanh_toan().toString().equals("")&&hoaDon.getThoi_gian_huy().toString().equals(""))
                             {
                                 hoaDonList.add(hoaDon);
