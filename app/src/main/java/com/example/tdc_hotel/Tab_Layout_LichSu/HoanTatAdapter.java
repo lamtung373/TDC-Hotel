@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.tdc_hotel.Danh_Gia;
+import com.example.tdc_hotel.Model.danh_gia;
 import com.example.tdc_hotel.Model.hoa_don;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.R;
@@ -25,11 +26,13 @@ import java.util.List;
 public class HoanTatAdapter extends RecyclerView.Adapter<HoanTatAdapter.HoanTatViewHolder>{
     private List<hoa_don> hoaDonList;
     private List<phong> phongList;
+    private List<danh_gia> danhGiaList;
     Context context;
-    public HoanTatAdapter(List<hoa_don> hoaDonList, List<phong> phongList, Context context) {
+    public HoanTatAdapter(List<hoa_don> hoaDonList, List<phong> phongList, Context context,List<danh_gia> danhGiaList) {
         this.hoaDonList = hoaDonList;
         this.phongList = phongList;
         this.context = context;
+        this.danhGiaList = danhGiaList;
     }
     @NonNull
     @Override
@@ -59,10 +62,20 @@ public class HoanTatAdapter extends RecyclerView.Adapter<HoanTatAdapter.HoanTatV
                 break;
             }
         }
+        for (int i = 0; i < danhGiaList.size(); i++)
+        {
+            if(danhGiaList.get(i).getId_hoadon().equals(hoaDon.getId_hoa_don()))
+            {
+                holder.btnDanhgia.setText("Đã đánh giá");
+                holder.btnDanhgia.setEnabled(false);
+                break;
+            }
+        }
         holder.btnDanhgia.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent intent=new Intent(context, Danh_Gia.class);
+                        intent.putExtra("hoaDon",hoaDon);
                         context.startActivity(intent);
             }
         });

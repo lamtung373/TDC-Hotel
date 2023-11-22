@@ -1,7 +1,7 @@
 package com.example.tdc_hotel.Model;
 
 public class danh_gia {
-    int  so_sao;
+    double  so_sao;
     String id_danh_gia,id_phong,id_hoadon,so_dien_thoai,chi_tiet_danh_gia,thoi_gian;
 
     @Override
@@ -17,7 +17,7 @@ public class danh_gia {
                 '}';
     }
 
-    public danh_gia(int so_sao, String id_danh_gia, String id_phong, String id_hoadon, String so_dien_thoai, String chi_tiet_danh_gia, String thoi_gian) {
+    public danh_gia(double so_sao, String id_danh_gia, String id_phong, String id_hoadon, String so_dien_thoai, String chi_tiet_danh_gia, String thoi_gian) {
         this.so_sao = so_sao;
         this.id_danh_gia = id_danh_gia;
         this.id_phong = id_phong;
@@ -63,7 +63,7 @@ public class danh_gia {
         this.id_danh_gia = id_danh_gia;
     }
 
-    public int getSo_sao() {
+    public double getSo_sao() {
         return so_sao;
     }
 
