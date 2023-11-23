@@ -1,6 +1,9 @@
 package com.example.tdc_hotel.Fragment_Menu.TimKiem;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tdc_hotel.Chi_Tiet_Phong;
 import com.example.tdc_hotel.Model.chi_tiet_tien_nghi;
-import com.example.tdc_hotel.Model.danh_gia;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.Model.tien_nghi;
 import com.example.tdc_hotel.R;
@@ -28,14 +31,28 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DanhGia_Adapter extends RecyclerView.Adapter<DanhGia_Adapter.DanhGia_Holder> {
+public class Adapter_ChonLoc extends RecyclerView.Adapter<Adapter_ChonLoc.DanhGia_Holder> {
     private ArrayList<phong> danhsachphong = new ArrayList<>();
     Context context;
+    private String orderBy;
+    private boolean ascending;
 
-
-    public DanhGia_Adapter(Context context, String filter) {
+    public Adapter_ChonLoc(Context context, String filter) {
         this.context = context;
-        DanhGia(filter);
+        if (filter.equals("sale")) {
+            orderBy = "sale";
+            ascending = false; // Sắp xếp tăng dần cho trường sale
+        } else if (filter.equals("danh_gia_sao")) {
+            orderBy = "danh_gia_sao";
+            ascending = true; // Sắp xếp giảm dần cho trường danh_gia_sao
+        } else if (filter.equals("luot_thue")) {
+            orderBy = "luot_thue";
+            ascending = true; // Sắp xếp giảm dần cho trường luot_thue
+        } else {
+            orderBy = "id_phong"; // Đặt orderBy mặc định của bạn ở đây
+            ascending = false; // Sắp xếp tăng dần cho trường sale
+        }
+        KhoiTao(orderBy, ascending);
     }
 
     @NonNull
@@ -53,7 +70,20 @@ public class DanhGia_Adapter extends RecyclerView.Adapter<DanhGia_Adapter.DanhGi
         holder.tvTenphongFinding.setText(String.valueOf(data.getTen_phong()));
         holder.tv_giaphong.setText(formatter.format(data.getGia()) + " VNđ/đêm");
         holder.tv_luotThue.setText(data.getLuot_thue() + " Lượt thuê");
-
+        if (data.getSale() != 0) {
+            holder.tv_giaphong.setVisibility(View.VISIBLE);
+            holder.tv_giaphong.setTextColor(Color.GRAY);
+            holder.tv_giaphong.setTextSize(13);
+            holder.tv_giaphong.setPaintFlags(holder.tv_giaphong.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            holder.tv_giaphong.setText(formatter.format(data.getGia()));
+            holder.tv_salephong.setText(formatter.format(data.getSale()) + " VNĐ");
+        } else {
+            holder.tv_giaphong.setText(formatter.format(data.getGia()) + " VNĐ");
+            holder.tv_salephong.setVisibility(View.GONE);
+            holder.tv_giaphong.setTextColor(Color.RED);
+            holder.tv_giaphong.setTextSize(15);
+            holder.tv_giaphong.setPaintFlags(holder.tv_salephong.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
+        }
         if (data.getAnh_phong() != null && !data.getAnh_phong().isEmpty()) {
             String imageUrl = data.getAnh_phong().get(0); // Use the first element or any element you want to display
 
@@ -80,6 +110,17 @@ public class DanhGia_Adapter extends RecyclerView.Adapter<DanhGia_Adapter.DanhGi
 
         getTienNghi(data.getId_phong(), result -> holder.tv_tiennghi.setText(result));
         getSoLuongDanhGia(data.getId_phong(), count -> holder.tv_soluongdanhgia.setText(count + " Đánh giá"));
+
+
+        //Sự kiện khi chọn 1 item
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Chi_Tiet_Phong.class);
+                intent.putExtra("phong",data);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -90,7 +131,7 @@ public class DanhGia_Adapter extends RecyclerView.Adapter<DanhGia_Adapter.DanhGi
     public class DanhGia_Holder extends RecyclerView.ViewHolder {
         ImageView iv_pictureFinding;
         ProgressBar progressBar;
-        TextView tvTenphongFinding, tv_ratting, tv_soluongdanhgia, tv_luotThue, tv_tiennghi, tv_giaphong;
+        TextView tvTenphongFinding, tv_ratting, tv_soluongdanhgia, tv_luotThue, tv_tiennghi, tv_giaphong, tv_salephong;
 
         public DanhGia_Holder(@NonNull View itemView) {
             super(itemView);
@@ -101,11 +142,12 @@ public class DanhGia_Adapter extends RecyclerView.Adapter<DanhGia_Adapter.DanhGi
             tv_luotThue = itemView.findViewById(R.id.tv_luotThue);
             tv_tiennghi = itemView.findViewById(R.id.tv_tiennghi);
             tv_giaphong = itemView.findViewById(R.id.tv_giaphong);
+            tv_salephong = itemView.findViewById(R.id.tv_salephong);
             progressBar = itemView.findViewById(R.id.progressBar);
         }
     }
 
-    private void DanhGia(String filter) {
+    private void KhoiTao(String filter, Boolean ascending) {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("phong");
         databaseReference.orderByChild(filter).addValueEventListener(new ValueEventListener() {
             @Override
@@ -115,20 +157,27 @@ public class DanhGia_Adapter extends RecyclerView.Adapter<DanhGia_Adapter.DanhGi
                 if (snapshot.exists()) {
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         phong room = dataSnapshot.getValue(phong.class);
+
                         if (room != null) {
-                            danhsachphong.add(room);
+                            if ("sale".equals(filter)) {
+                                if (room.getSale() > 0) {
+                                    danhsachphong.add(room);
+                                }
+                            } else {
+                                danhsachphong.add(room);
+                            }
                         }
                     }
-                    if (!filter.equals("gia")) {
+                    if (ascending) {
                         // Đảo ngược thứ tự của danh sách
                         Collections.reverse(danhsachphong);
-
+                    }
+                    if (!filter.equals("id_phong")){
                         // Giữ lại chỉ 10 phòng đầu tiên
                         while (danhsachphong.size() > 10) {
                             danhsachphong.remove(danhsachphong.size() - 1);
                         }
                     }
-
                     notifyDataSetChanged(); // Notify the adapter that the data has changed
                 }
             }
