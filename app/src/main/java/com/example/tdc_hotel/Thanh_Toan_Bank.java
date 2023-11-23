@@ -25,7 +25,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class Thanh_Toan_Bank extends AppCompatActivity {
-    ImageView ivCopy, ivCopy_nd;
+    ImageView ivCopy, ivCopy_nd,ivback;
     TextView vuilong, tv_sotien, tvNd, tvStk;
     Button btn_thanhtoan;
     String ma_hoa_don = "";
@@ -89,6 +89,12 @@ public class Thanh_Toan_Bank extends AppCompatActivity {
                 });
             }
         });
+        ivback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void setControl() {
@@ -100,5 +106,6 @@ public class Thanh_Toan_Bank extends AppCompatActivity {
         pb = findViewById(R.id.pb);
         vuilong = findViewById(R.id.vuilong);
         tv_sotien = findViewById(R.id.tv_sotien);
+        ivback = findViewById(R.id.ivback);
     }
 }
