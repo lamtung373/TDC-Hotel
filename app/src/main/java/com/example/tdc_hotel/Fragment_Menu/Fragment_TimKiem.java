@@ -112,19 +112,18 @@ public class Fragment_TimKiem extends Fragment {
         });
         ChonThoiGianNhan();
         ChonThoiGianTra();
-        timKiemPhong(btn_thoigiannhan.getText().toString(), btn_thoigiantra.getText().toString());
+        timKiemPhong();
     }
 
 
-    void timKiemPhong(String thoiGianNhan, String thoiGianTra) {
+    void timKiemPhong() {
         btnTimkiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("sploaiphong", getLoaiPhong + btn_thoigiannhan.getText() + btn_thoigiantra.getText());
-                if (thoiGianNhan != null && thoiGianTra != null && getLoaiPhong != null) {
+                if (btn_thoigiannhan.getText().toString() != null && btn_thoigiantra.getText().toString() != null && getLoaiPhong != null) {
                     Intent intent = new Intent(getActivity(), Ket_Qua_Tim_Kiem.class);
-                    intent.putExtra("ngayNhan", thoiGianNhan);
-                    intent.putExtra("ngayTra", thoiGianTra);
+                    intent.putExtra("ngayNhan", btn_thoigiannhan.getText().toString());
+                    intent.putExtra("ngayTra", btn_thoigiantra.getText().toString());
                     intent.putExtra("loaiPhong", getLoaiPhong);
                     getActivity().startActivity(intent);
                 } else {
@@ -211,15 +210,21 @@ public class Fragment_TimKiem extends Fragment {
     }
 
     private void Initialization() {
-        LuotThue_Adapter luotThue_adapter = new LuotThue_Adapter(getActivity());
-        DanhGia_Adapter danhGia_adapter = new DanhGia_Adapter();
-        Gia_Adapter gia_adapter = new Gia_Adapter();
+        DanhGia_Adapter luotThue = new DanhGia_Adapter(getContext(),"luot_thue");
         rcvLuotthue.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        rcvLuotthue.setAdapter(luotThue_adapter);
+        rcvLuotthue.setAdapter(luotThue);
+
+
+        DanhGia_Adapter danhGia = new DanhGia_Adapter(getContext(),"danh_gia_sao");
         rcvDanhgia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        rcvDanhgia.setAdapter(danhGia_adapter);
+        rcvDanhgia.setAdapter(danhGia);
+
+
+        DanhGia_Adapter giaThue = new DanhGia_Adapter(getContext(),"gia");
         rcvGia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        rcvGia.setAdapter(gia_adapter);
+        rcvGia.setAdapter(giaThue);
+
+
         typeRoomList.add("1 Người");
         typeRoomList.add("2 Người");
         typeRoomList.add("3 Người");
