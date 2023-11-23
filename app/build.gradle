@@ -50,4 +50,7 @@ dependencies {
 
     // Các thư viện bên ngoài khác
     implementation("com.squareup.picasso:picasso:2.71828")
+
+    //Thư viện momo
+    implementation 'com.github.momo-wallet:mobile-sdk:1.0.7'
 }
