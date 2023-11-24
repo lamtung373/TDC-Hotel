@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 //import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.KQ_TimKiem_Adapter;
+import com.example.tdc_hotel.Model.danh_gia;
 import com.example.tdc_hotel.Model.hoa_don;
 import com.example.tdc_hotel.Model.khach_hang;
 import com.example.tdc_hotel.Model.phong;
@@ -42,6 +43,7 @@ public class Fragment_HT extends Fragment {
     private String mParam1;
     private String mParam2;
     private List<hoa_don> hoaDonList = new ArrayList<>();
+    private List<danh_gia> danhGiaList = new ArrayList<>();
     private List<khach_hang> khachHangList = new ArrayList<>();
     private List<phong> phongList = new ArrayList<>();
     private HoanTatAdapter daDatAdapter;
@@ -118,6 +120,26 @@ public class Fragment_HT extends Fragment {
             }
         });
     }
+    private void LoadDanhGia() {
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("danh_gia");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                danhGiaList.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                        danh_gia danhGia = dataSnapshot1.getValue(danh_gia.class);
+                        danhGiaList.add(danhGia);
+                    }
+                }
+                daDatAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
     private void LoadPhong() {
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("phong");
         ref.addValueEventListener(new ValueEventListener() {
@@ -138,12 +160,13 @@ public class Fragment_HT extends Fragment {
             }
         });
     }
+
     private void setControl(View view) {
         rcvPhong = view.findViewById(R.id.rcvPhong);
         LoadHoaDon();
         LoadPhong();
-
-        daDatAdapter = new HoanTatAdapter(hoaDonList,phongList);
+        LoadDanhGia();
+        daDatAdapter = new HoanTatAdapter(hoaDonList,phongList,getActivity(),danhGiaList);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         rcvPhong.setLayoutManager(linearLayoutManager);
         RecyclerView.ItemDecoration decoration = new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL);
