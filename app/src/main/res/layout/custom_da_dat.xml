@@ -27,34 +27,16 @@
                 android:layout_height="wrap_content"
                 android:text="Tên phòng" />
 
-            <TextView
-                android:id="@+id/tvDanhGia"
-                style="@style/tv"
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:drawableEnd="@drawable/star"
-                android:text="5.0"
-                android:textStyle="normal" />
         </RelativeLayout>
 
 
         <TextView
-            android:id="@+id/tvMota"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/tv"
+            android:id="@+id/tvMota"
             android:textSize="15dp"
             android:textStyle="normal"
-            android:text="Tổng thanh toán: 4.090.000đ\n12h 20/03/2023 - 16h 22/03/2023"/>
-        <Button
-            android:id="@+id/btnDanhgia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/btn"
-            android:padding="0dp"
-            android:textSize="15dp"
-            android:text="Viết đánh giá"
-            android:layout_marginRight="5dp"/>
+            android:text="Mã hóa đơn: 0000\n24/03/2003-20/03/2003\nĐã trả: 2000Đ\nTổng: 20000Đ"/>
     </LinearLayout>
 </LinearLayout>

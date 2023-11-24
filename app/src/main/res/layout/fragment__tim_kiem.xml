@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fillViewport="true"
     tools:context=".Fragment_Menu.Fragment_TimKiem">
 
     <!-- TODO: Update blank fragment layout -->
@@ -52,7 +53,7 @@
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_date"
                         android:drawableLeft="@drawable/date"
-                        android:text="01/01/1111 00:00"
+                        android:hint="01/01/1111 00:00"
                         android:textColor="@color/black"
                         android:textSize="15dp" />
                 </LinearLayout>
@@ -72,12 +73,13 @@
                         android:text="Thời gian trả" />
 
                     <Button
+                        android:id="@+id/btn_thoigiantra"
                         style="@style/btn"
                         android:layout_width="180dp"
                         android:layout_height="wrap_content"
                         android:background="@drawable/btn_date"
                         android:drawableLeft="@drawable/date"
-                        android:text="01/01/1111 00:00"
+                        android:hint="01/01/1111 00:00"
                         android:textColor="@color/black"
                         android:textSize="15dp" />
                 </LinearLayout>
@@ -85,7 +87,7 @@
             </LinearLayout>
 
             <Spinner
-                android:id="@+id/spTimkiem"
+                android:id="@+id/spRoomType"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
                 android:layout_width="match_parent"
@@ -110,7 +112,7 @@
                 style="@style/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Danh sách phòng nhiều lượt thuê nhất:"
+                android:text="Top 10 phòng có nhiều lượt thuê nhất:"
                 android:layout_marginLeft="15dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -122,7 +124,7 @@
                 style="@style/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Danh sách phòng đánh giá tốt nhất:"
+                android:text="Top 10 phòng có đánh giá tốt nhất:"
                 android:layout_marginLeft="15dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -134,13 +136,26 @@
                 style="@style/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Danh sách phòng giá tốt nhất:"
+                android:text="Top 10 phòng giảm giá thấp nhất:"
                 android:layout_marginLeft="15dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvGia"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"/>
+            <TextView
+                style="@style/tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tất cả phòng:"
+                android:layout_marginLeft="15dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rcvAll"
+                android:layout_width="match_parent"
+                android:layout_height="500dp" />
         </LinearLayout>
     </LinearLayout>
+
 </ScrollView>
