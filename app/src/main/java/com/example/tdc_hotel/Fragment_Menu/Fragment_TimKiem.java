@@ -73,7 +73,7 @@ public class Fragment_TimKiem extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    // Khai báo các thành phần giao diện
     RecyclerView rcvLuotthue, rcvDanhgia, rcvGia,rcvAll;
     Button btnTimkiem, btn_thoigiannhan, btn_thoigiantra;
     Spinner spRoomType;
@@ -85,7 +85,7 @@ public class Fragment_TimKiem extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Gắn layout cho fragment
         View view = inflater.inflate(R.layout.fragment__tim_kiem, container, false);
         setControl(view);
         Initialization();
@@ -94,6 +94,7 @@ public class Fragment_TimKiem extends Fragment {
     }
 
     private void setEvent() {
+        // Xử lý sự kiện khi loại phòng được chọn từ Spinner
         spRoomType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -112,10 +113,15 @@ public class Fragment_TimKiem extends Fragment {
 
 
     void timKiemPhong() {
+        // Xử lý sự kiện khi nút tìm kiếm được nhấn
         btnTimkiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btn_thoigiannhan.getText().toString() != null && btn_thoigiantra.getText().toString() != null && getLoaiPhong != null) {
+                // Kiểm tra nếu đã chọn đủ thông tin cần thiết
+                if (btn_thoigiannhan.getText().toString() != null &&
+                        btn_thoigiantra.getText().toString() != null &&
+                        getLoaiPhong != null) {
+                    // Chuyển sang màn hình kết quả tìm kiếm với các thông tin đã chọn
                     Intent intent = new Intent(getActivity(), Ket_Qua_Tim_Kiem.class);
                     intent.putExtra("ngayNhan", btn_thoigiannhan.getText().toString());
                     intent.putExtra("ngayTra", btn_thoigiantra.getText().toString());
@@ -129,8 +135,8 @@ public class Fragment_TimKiem extends Fragment {
         });
     }
 
-
     void ChonThoiGianNhan() {
+
         btn_thoigiannhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

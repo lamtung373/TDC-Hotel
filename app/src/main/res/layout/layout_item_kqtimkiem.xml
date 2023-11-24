@@ -82,8 +82,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:hint="80m²: 2 phòng tắm - 2 phòng ngủ"
                 android:maxLines="1"
+                android:hint="80m²: 2 phòng tắm - 2 phòng ngủ"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="normal" />
