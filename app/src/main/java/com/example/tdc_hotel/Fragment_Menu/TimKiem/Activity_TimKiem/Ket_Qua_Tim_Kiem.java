@@ -7,17 +7,19 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Ket_Qua_Tim_Kiem extends AppCompatActivity {
     RecyclerView rcvPhong;
@@ -39,7 +41,7 @@ public class Ket_Qua_Tim_Kiem extends AppCompatActivity {
         adapter_Finding = new Adapter_ketQuaTimKiem(this, ngayNhan, ngayTra, loaiPhong);
         setControl();
         setEvent();
-        tv_thongtintim.setText(ngayNhan+"-"+ngayTra+"( "+loaiPhong+" )");
+        tv_thongtintim.setText(ngayNhan + "-" + ngayTra + "( " + loaiPhong + " )");
     }
 
     private void setEvent() {
@@ -47,16 +49,62 @@ public class Ket_Qua_Tim_Kiem extends AppCompatActivity {
         rcvPhong.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rcvPhong.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         rcvPhong.setAdapter(adapter_Finding);
-       // Toast.makeText(this,"Số lượng phòng phù hợp là: "+adapter_Finding.getItemCount(),Toast.LENGTH_LONG).show();
 
-        // Thiết lập adapter cho Spinner
         ArrayAdapter<String> adapterSpinner = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arrForspSapxep);
         adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spSapxep.setAdapter(adapterSpinner);
+
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        spSapxep.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String filter = parent.getItemAtPosition(position).toString();
+                ArrayList<phong> filterList = new ArrayList<>();
+                filterList.addAll(adapter_Finding.getFindingList());
+
+                switch (filter) {
+                    case "Tăng dần theo giá":
+                        if (filterList != null && filterList.size() > 0) {
+                           Collections.sort(filterList, Comparator.comparingDouble(phong::getGia));
+                        }
+                        break;
+
+                    case "Giảm dần theo giá":
+                        if (filterList != null && filterList.size() > 0) {
+                           Collections.sort(filterList, Comparator.comparingDouble(phong::getGia).reversed());
+
+                        }
+                        break;
+
+                    case "Tăng dần theo đánh giá sao":
+                        if (filterList != null && filterList.size() > 0) {
+                            Collections.sort(filterList, Comparator.comparingDouble(phong::getDanh_gia_sao));
+                        }
+                        break;
+
+                    case "Giảm dần theo đánh giá sao":
+                        if (filterList != null && filterList.size() > 0) {
+                            Collections.sort(filterList, Comparator.comparingDouble(phong::getDanh_gia_sao).reversed());
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+
+                adapter_Finding.setFindingList(filterList);
+                adapter_Finding.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
@@ -71,7 +119,7 @@ public class Ket_Qua_Tim_Kiem extends AppCompatActivity {
     private void setControl() {
         rcvPhong = findViewById(R.id.rcvPhong_finding);
         spSapxep = findViewById(R.id.spSapxep);
-        tv_thongtintim=findViewById(R.id.tv_thongtintim);
-        btn_back=findViewById(R.id.btn_back);
+        tv_thongtintim = findViewById(R.id.tv_thongtintim);
+        btn_back = findViewById(R.id.btn_back);
     }
 }

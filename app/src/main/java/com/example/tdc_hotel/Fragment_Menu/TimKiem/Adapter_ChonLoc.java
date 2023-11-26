@@ -58,7 +58,7 @@ public class Adapter_ChonLoc extends RecyclerView.Adapter<Adapter_ChonLoc.DanhGi
     @NonNull
     @Override
     public DanhGia_Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_kqtimkiem, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_item_phong, parent, false);
         return new DanhGia_Holder(view);
     }
 
@@ -135,15 +135,15 @@ public class Adapter_ChonLoc extends RecyclerView.Adapter<Adapter_ChonLoc.DanhGi
 
         public DanhGia_Holder(@NonNull View itemView) {
             super(itemView);
-            iv_pictureFinding = itemView.findViewById(R.id.iv_pictureFinding);
-            tvTenphongFinding = itemView.findViewById(R.id.tvTenphongFinding);
-            tv_ratting = itemView.findViewById(R.id.tv_ratting);
-            tv_soluongdanhgia = itemView.findViewById(R.id.tv_soluongdanhgia);
-            tv_luotThue = itemView.findViewById(R.id.tv_luotThue);
-            tv_tiennghi = itemView.findViewById(R.id.tv_tiennghi);
-            tv_giaphong = itemView.findViewById(R.id.tv_giaphong);
-            tv_salephong = itemView.findViewById(R.id.tv_salephong);
-            progressBar = itemView.findViewById(R.id.progressBar);
+            tvTenphongFinding = itemView.findViewById(R.id.tvTenphongRoom);
+            tv_ratting = itemView.findViewById(R.id.tv_rattingRoom);
+            tv_soluongdanhgia = itemView.findViewById(R.id.tv_soluongdanhgiaRoom);
+            tv_luotThue = itemView.findViewById(R.id.tv_luotThueRoom);
+            tv_tiennghi = itemView.findViewById(R.id.tv_tiennghiRoom);
+            tv_giaphong = itemView.findViewById(R.id.tv_giaphongRoom);
+            tv_salephong = itemView.findViewById(R.id.tv_salephongRoom);
+            progressBar = itemView.findViewById(R.id.progressBarRoom);
+            iv_pictureFinding=itemView.findViewById(R.id.iv_pictureRoom);
         }
     }
 

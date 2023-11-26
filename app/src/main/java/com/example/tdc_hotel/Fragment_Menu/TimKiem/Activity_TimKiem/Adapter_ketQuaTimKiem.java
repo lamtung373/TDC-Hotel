@@ -129,6 +129,12 @@ public class Adapter_ketQuaTimKiem extends RecyclerView.Adapter<Adapter_ketQuaTi
             }
         });
     }
+    public void setFindingList(ArrayList<phong> findingList) {
+        this.findingList = findingList;
+    }
+    public ArrayList<phong>getFindingList(){
+        return findingList;
+    }
 
     @Override
     // Lấy số lượng items

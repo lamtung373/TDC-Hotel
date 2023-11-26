@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -214,23 +215,24 @@ public class Fragment_TimKiem extends Fragment {
         Adapter_ChonLoc luotThue = new Adapter_ChonLoc(getContext(),"luot_thue");
         rcvLuotthue.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvLuotthue.setAdapter(luotThue);
-        autoScrollRecyclerView(rcvLuotthue,4444);
+        autoScrollRecyclerView(rcvLuotthue,1000);
 
 
         Adapter_ChonLoc danhGia = new Adapter_ChonLoc(getContext(),"danh_gia_sao");
         rcvDanhgia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvDanhgia.setAdapter(danhGia);
-        autoScrollRecyclerView(rcvDanhgia,4321);
+        autoScrollRecyclerView(rcvDanhgia,1000);
 
 
         Adapter_ChonLoc giaThue = new Adapter_ChonLoc(getContext(),"sale");
         rcvGia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvGia.setAdapter(giaThue);
-        autoScrollRecyclerView(rcvGia,4567);
+        autoScrollRecyclerView(rcvGia,1000);
 
         Adapter_ChonLoc all = new Adapter_ChonLoc(getContext(),"");
-        rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvAll.setAdapter(all);
+        autoScrollRecyclerView(rcvGia,1000);
 
 
         typeRoomList.add("1 Người");
@@ -243,7 +245,7 @@ public class Fragment_TimKiem extends Fragment {
     private void autoScrollRecyclerView(final RecyclerView recyclerView, final long timeInterval) {
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
-            int itemCount = recyclerView.getAdapter().getItemCount();
+            int itemCount = recyclerView.getAdapter().getItemCount()-1;
             int currentPosition = 0;
 
             @Override
@@ -257,7 +259,6 @@ public class Fragment_TimKiem extends Fragment {
         };
         handler.postDelayed(runnable, timeInterval); // Bắt đầu auto-scroll sau khoảng thời gian được truyền vào
     }
-
     private void setControl(View view) {
         rcvLuotthue = view.findViewById(R.id.rcvLuotthue);
         rcvDanhgia = view.findViewById(R.id.rcvDanhgia);
