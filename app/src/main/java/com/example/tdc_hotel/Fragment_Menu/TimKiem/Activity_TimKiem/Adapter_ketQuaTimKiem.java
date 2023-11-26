@@ -1,6 +1,7 @@
 package com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.tdc_hotel.Chi_Tiet_Phong;
 import com.example.tdc_hotel.Model.chi_tiet_tien_nghi;
 import com.example.tdc_hotel.Model.danh_gia;
 import com.example.tdc_hotel.Model.hoa_don;
@@ -118,7 +120,20 @@ public class Adapter_ketQuaTimKiem extends RecyclerView.Adapter<Adapter_ketQuaTi
                 holder.tv_soluongdanhgia.setText(count + " Đánh giá");
             }
         });
-
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Chi_Tiet_Phong.class);
+                intent.putExtra("phong",data);
+                context.startActivity(intent);
+            }
+        });
+    }
+    public void setFindingList(ArrayList<phong> findingList) {
+        this.findingList = findingList;
+    }
+    public ArrayList<phong>getFindingList(){
+        return findingList;
     }
 
     @Override
