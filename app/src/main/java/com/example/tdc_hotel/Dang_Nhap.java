@@ -38,7 +38,6 @@ public class Dang_Nhap extends AppCompatActivity {
                 intent.putExtra("so_dien_thoai", soDienThoai);
                 intent.putExtra("ho_ten", hoTen);
                 startActivity(intent);
-                finish();
             }
         });
     }
