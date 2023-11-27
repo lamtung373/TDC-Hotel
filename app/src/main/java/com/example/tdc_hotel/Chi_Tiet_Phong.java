@@ -10,6 +10,7 @@ import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -68,9 +69,10 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
     }
 
     private void setEvent() {
-        String id_kh = "123";
+        SharedPreferences sharedPreferences = getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, MODE_PRIVATE);
+        String id_kh = sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh, "");
         DatabaseReference reference_yeuthich = FirebaseDatabase.getInstance().getReference("yeu_thich");
-        reference_yeuthich.child(id_kh).child("-Nj83mHkf60DbzdG20ai").addValueEventListener(new ValueEventListener() {
+        reference_yeuthich.child(id_kh).child(phong.getId_phong()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
