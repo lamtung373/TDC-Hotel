@@ -1,6 +1,5 @@
 package com.example.tdc_hotel.Fragment_Menu.ChiTiet_Phong;
 
-import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.tdc_hotel.Fragment_Menu.TimKiem.DanhGia_Adapter;
 import com.example.tdc_hotel.Model.dich_vu;
 import com.example.tdc_hotel.Model.loai_dich_vu;
 import com.example.tdc_hotel.R;
