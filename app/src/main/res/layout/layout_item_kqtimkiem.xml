@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_margin="10dp"
     android:orientation="horizontal"
-    style="@style/rev_item"
     android:padding="10dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -82,8 +81,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:hint="80m²: 2 phòng tắm - 2 phòng ngủ"
                 android:maxLines="1"
+                android:hint="80m²: 2 phòng tắm - 2 phòng ngủ"
                 android:textColor="@color/black"
                 android:textSize="15dp"
                 android:textStyle="normal" />

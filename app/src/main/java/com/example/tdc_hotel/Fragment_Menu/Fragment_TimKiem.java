@@ -4,6 +4,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -73,7 +74,7 @@ public class Fragment_TimKiem extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-
+    // Khai báo các thành phần giao diện
     RecyclerView rcvLuotthue, rcvDanhgia, rcvGia,rcvAll;
     Button btnTimkiem, btn_thoigiannhan, btn_thoigiantra;
     Spinner spRoomType;
@@ -85,7 +86,7 @@ public class Fragment_TimKiem extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        // Gắn layout cho fragment
         View view = inflater.inflate(R.layout.fragment__tim_kiem, container, false);
         setControl(view);
         Initialization();
@@ -94,6 +95,7 @@ public class Fragment_TimKiem extends Fragment {
     }
 
     private void setEvent() {
+        // Xử lý sự kiện khi loại phòng được chọn từ Spinner
         spRoomType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -112,10 +114,15 @@ public class Fragment_TimKiem extends Fragment {
 
 
     void timKiemPhong() {
+        // Xử lý sự kiện khi nút tìm kiếm được nhấn
         btnTimkiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (btn_thoigiannhan.getText().toString() != null && btn_thoigiantra.getText().toString() != null && getLoaiPhong != null) {
+                // Kiểm tra nếu đã chọn đủ thông tin cần thiết
+                if (btn_thoigiannhan.getText().toString() != null &&
+                        btn_thoigiantra.getText().toString() != null &&
+                        getLoaiPhong != null) {
+                    // Chuyển sang màn hình kết quả tìm kiếm với các thông tin đã chọn
                     Intent intent = new Intent(getActivity(), Ket_Qua_Tim_Kiem.class);
                     intent.putExtra("ngayNhan", btn_thoigiannhan.getText().toString());
                     intent.putExtra("ngayTra", btn_thoigiantra.getText().toString());
@@ -129,8 +136,8 @@ public class Fragment_TimKiem extends Fragment {
         });
     }
 
-
     void ChonThoiGianNhan() {
+
         btn_thoigiannhan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -208,23 +215,24 @@ public class Fragment_TimKiem extends Fragment {
         Adapter_ChonLoc luotThue = new Adapter_ChonLoc(getContext(),"luot_thue");
         rcvLuotthue.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvLuotthue.setAdapter(luotThue);
-        autoScrollRecyclerView(rcvLuotthue,4444);
+        autoScrollRecyclerView(rcvLuotthue,1000);
 
 
         Adapter_ChonLoc danhGia = new Adapter_ChonLoc(getContext(),"danh_gia_sao");
         rcvDanhgia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvDanhgia.setAdapter(danhGia);
-        autoScrollRecyclerView(rcvDanhgia,4321);
+        autoScrollRecyclerView(rcvDanhgia,1000);
 
 
         Adapter_ChonLoc giaThue = new Adapter_ChonLoc(getContext(),"sale");
         rcvGia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvGia.setAdapter(giaThue);
-        autoScrollRecyclerView(rcvGia,4567);
+        autoScrollRecyclerView(rcvGia,1000);
 
         Adapter_ChonLoc all = new Adapter_ChonLoc(getContext(),"");
-        rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvAll.setAdapter(all);
+        autoScrollRecyclerView(rcvGia,1000);
 
 
         typeRoomList.add("1 Người");
@@ -237,7 +245,7 @@ public class Fragment_TimKiem extends Fragment {
     private void autoScrollRecyclerView(final RecyclerView recyclerView, final long timeInterval) {
         final Handler handler = new Handler();
         final Runnable runnable = new Runnable() {
-            int itemCount = recyclerView.getAdapter().getItemCount();
+            int itemCount = recyclerView.getAdapter().getItemCount()-1;
             int currentPosition = 0;
 
             @Override
@@ -251,7 +259,6 @@ public class Fragment_TimKiem extends Fragment {
         };
         handler.postDelayed(runnable, timeInterval); // Bắt đầu auto-scroll sau khoảng thời gian được truyền vào
     }
-
     private void setControl(View view) {
         rcvLuotthue = view.findViewById(R.id.rcvLuotthue);
         rcvDanhgia = view.findViewById(R.id.rcvDanhgia);

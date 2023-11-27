@@ -139,6 +139,12 @@
                 android:text="Top 10 phòng giảm giá thấp nhất:"
                 android:layout_marginLeft="15dp"/>
 
+<!--            <androidx.viewpager.widget.ViewPager-->
+<!--                android:id="@+id/rcvGia"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal"/>-->
+            
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvGia"
                 android:layout_width="match_parent"
@@ -154,7 +160,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rcvAll"
                 android:layout_width="match_parent"
-                android:layout_height="500dp" />
+                android:layout_height="match_parent"
+                android:orientation="horizontal"/>
         </LinearLayout>
     </LinearLayout>
 
