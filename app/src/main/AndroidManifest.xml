@@ -34,9 +34,7 @@
         <activity
             android:name=".Xac_Thuc_OTP"
             android:exported="false" />
-
         <activity
-
             android:name=".Main_Activity"
             android:exported="false" />
         <activity

@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:text="0123456789"
             android:layout_marginBottom="0dp"/>
-        <LinearLayout
+        <RelativeLayout
             android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         <Button
             android:id="@+id/btnDangXuat"
             style="@style/btn"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="Đăng xuất"
             android:drawableLeft="@drawable/logout_t"
@@ -92,19 +92,12 @@
         <Button
             android:id="@+id/btnLuu"
             style="@style/btn"
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:text="Lưu"
-            android:layout_marginLeft="20dp"
+            android:text="Cập nhật"
             android:drawableLeft="@drawable/save_tt"
             android:backgroundTint="@color/green"/>
-    </LinearLayout>
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"/>
+    </RelativeLayout>
     </LinearLayout>
 
 </ScrollView>
