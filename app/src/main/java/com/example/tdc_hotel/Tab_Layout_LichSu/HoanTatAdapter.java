@@ -57,7 +57,7 @@ public class HoanTatAdapter extends RecyclerView.Adapter<HoanTatAdapter.HoanTatV
         {
             if(phongList.get(i).getId_phong().equals(hoaDon.getId_phong())) {
                 holder.tvTenphong.setText(phongList.get(i).getTen_phong());
-                Picasso.get().load(phongList.get(i).getAnh_phong().get(1).toString()).into(holder.ivPhong);
+                Picasso.get().load(phongList.get(i).getAnh_phong().get(0).toString()).into(holder.ivPhong);
                 holder.tvDanhGia.setText(String.valueOf(phongList.get(i).getDanh_gia_sao()));
                 break;
             }
