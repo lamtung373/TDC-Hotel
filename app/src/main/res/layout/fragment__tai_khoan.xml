@@ -41,7 +41,6 @@
                 android:src="@drawable/personal"/>
 
         </RelativeLayout>
-
         <TextView
             style="@style/tv"
             android:layout_width="wrap_content"
@@ -51,13 +50,14 @@
             android:layout_marginBottom="10dp"
             android:text="Tên" />
 
-        <TextView
-            android:id="@+id/edtTen"
+        <EditText
+            android:inputType="text"
+            android:id="@+id/edt_Ten"
             style="@style/edt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nguyễn Văn A"
-            android:layout_marginBottom="0dp"/>
+            android:layout_marginBottom="0dp"
+            android:text="Nguyễn Văn A" />
 
         <TextView
             style="@style/tv"
@@ -69,21 +69,42 @@
             android:text="Số điện thoại" />
 
         <TextView
-            android:id="@+id/edtSDT"
+            android:id="@+id/tv_SDT"
             style="@style/edt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0123456789"
             android:layout_marginBottom="0dp"/>
-
+        <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
         <Button
             android:id="@+id/btnDangXuat"
             style="@style/btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="Đăng xuất"
+            android:drawableLeft="@drawable/logout_t"
             android:backgroundTint="@color/red"/>
+        <Button
+            android:id="@+id/btnLuu"
+            style="@style/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu"
+            android:layout_marginLeft="20dp"
+            android:drawableLeft="@drawable/save_tt"
+            android:backgroundTint="@color/green"/>
+    </LinearLayout>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"/>
     </LinearLayout>
 
 </ScrollView>

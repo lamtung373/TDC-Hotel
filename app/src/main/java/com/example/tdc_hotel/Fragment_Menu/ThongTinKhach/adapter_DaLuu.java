@@ -54,6 +54,7 @@ public class adapter_DaLuu extends RecyclerView.Adapter<adapter_DaLuu.MyViewHold
         holder.tv_tenphong.setText(dataItem.getTen_phong());
         holder.tv_luotthue.setText(String.valueOf(dataItem.getLuot_thue()));
         holder.tvgia.setText(String.valueOf(dataItem.getGia()));
+        holder.tv_sosao.setText(String.valueOf(dataItem.getDanh_gia_sao()));
         // Kiểm tra xem phòng có ảnh hay không
         if (dataItem.getAnh_phong() != null && !dataItem.getAnh_phong().isEmpty()) {
             // Lấy URL ảnh đầu tiên từ ArrayList<String>
@@ -91,6 +92,7 @@ public class adapter_DaLuu extends RecyclerView.Adapter<adapter_DaLuu.MyViewHold
                 openChiTietPhong(dataItem);
             }
         });
+
     }
 
     @Override
@@ -100,8 +102,9 @@ public class adapter_DaLuu extends RecyclerView.Adapter<adapter_DaLuu.MyViewHold
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         LinearLayout layout;
-        TextView tv_tenphong, tv_danhgia, tv_luotthue, tv_tiennghi, tvgia;
+        TextView tv_tenphong, tv_danhgia, tv_luotthue, tv_tiennghi, tvgia, tv_sosao;
         ImageView imgView;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imgView = itemView.findViewById(R.id.iv_item_phong);
@@ -111,6 +114,7 @@ public class adapter_DaLuu extends RecyclerView.Adapter<adapter_DaLuu.MyViewHold
             tv_luotthue = itemView.findViewById(R.id.tvLuotThue);
             tv_tiennghi = itemView.findViewById(R.id.tvTienNghiPhong);
             tvgia = itemView.findViewById(R.id.tvGiaThue);
+            tv_sosao = itemView.findViewById(R.id.tvSoSao);
         }
     }
     public void sortByPriceDescending() {

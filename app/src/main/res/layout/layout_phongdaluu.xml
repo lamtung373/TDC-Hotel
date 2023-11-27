@@ -48,7 +48,7 @@
                 android:text="Tên phòng" />
 
             <TextView
-
+                android:id="@+id/tvSoSao"
                 style="@style/tv"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"

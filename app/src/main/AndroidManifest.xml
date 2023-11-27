@@ -39,7 +39,9 @@
         <activity
             android:name=".Dang_Nhap"
             android:exported="false" />
+
         <activity
+
             android:name=".Main_Activity"
             android:exported="true">
             <intent-filter>
