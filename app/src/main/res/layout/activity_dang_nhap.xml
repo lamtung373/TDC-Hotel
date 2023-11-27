@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="20dp"
     tools:context=".Dang_Nhap">
 
     <ImageView
@@ -12,30 +13,33 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/logo" />
-    <TextView
 
+    <TextView
+        style="@style/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/title"
-        android:text="TDC HOTEL"/>
-    <EditText
-        android:id="@+id/edtsdt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/edt"
-        android:hint="Nhập số điện thoại"/>
+        android:text="TDC HOTEL" />
 
     <EditText
-        android:id="@+id/edthoten"
+        android:id="@+id/edtSDT_DN"
         style="@style/edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Nhập số điện thoại" />
+
+    <EditText
+        android:id="@+id/edtHoTen_DN"
+        style="@style/edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:hint="Nhập họ tên" />
 
     <Button
-        android:id="@+id/btndn"
+        android:id="@+id/btnDangNhap"
         style="@style/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ĐĂNG NHẬP"/>
+        android:text="ĐĂNG NHẬP" />
+
 </LinearLayout>
