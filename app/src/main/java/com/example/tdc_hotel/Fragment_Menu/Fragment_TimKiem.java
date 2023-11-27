@@ -1,9 +1,13 @@
 package com.example.tdc_hotel.Fragment_Menu;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
@@ -17,11 +21,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tdc_hotel.Fragment_Menu.TimKiem.Activity_TimKiem.Ket_Qua_Tim_Kiem;
 import com.example.tdc_hotel.Fragment_Menu.TimKiem.Adapter_ChonLoc;
+import com.example.tdc_hotel.Model.khach_hang;
 import com.example.tdc_hotel.R;
+import com.example.tdc_hotel.Xac_Thuc_OTP;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -75,15 +87,16 @@ public class Fragment_TimKiem extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+
     // Khai báo các thành phần giao diện
-    RecyclerView rcvLuotthue, rcvDanhgia, rcvGia,rcvAll;
+    RecyclerView rcvLuotthue, rcvDanhgia, rcvGia, rcvAll;
     Button btnTimkiem, btn_thoigiannhan, btn_thoigiantra;
     Spinner spRoomType;
     ArrayList<String> typeRoomList = new ArrayList<>();
     private String getLoaiPhong = null;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
     private Timer timerLuotthue, timerDanhgia, timerGia, timerAll;
-
+    TextView tvxinchao;
 
 
     @Override
@@ -98,6 +111,7 @@ public class Fragment_TimKiem extends Fragment {
     }
 
     private void setEvent() {
+        getNameCustomer();
         // Xử lý sự kiện khi loại phòng được chọn từ Spinner
         spRoomType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -214,22 +228,48 @@ public class Fragment_TimKiem extends Fragment {
         });
     }
 
+    void getNameCustomer() {
+
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, MODE_PRIVATE);
+        String sdt = sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh, "");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("khach_hang").child(sdt);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    if (snapshot.exists()) {
+                        khach_hang customer=snapshot.getValue(khach_hang.class);
+                        if (!customer.toMap().isEmpty()&& customer.getSo_dien_thoai().equals(sdt)){
+                            tvxinchao.setText("Xin chào "+ customer.getTen());
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     private void Initialization() {
-        Adapter_ChonLoc luotThue = new Adapter_ChonLoc(getContext(),"luot_thue");
+        Adapter_ChonLoc luotThue = new Adapter_ChonLoc(getContext(), "luot_thue");
         rcvLuotthue.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvLuotthue.setAdapter(luotThue);
 
 
-        Adapter_ChonLoc danhGia = new Adapter_ChonLoc(getContext(),"danh_gia_sao");
+        Adapter_ChonLoc danhGia = new Adapter_ChonLoc(getContext(), "danh_gia_sao");
         rcvDanhgia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvDanhgia.setAdapter(danhGia);
 
 
-        Adapter_ChonLoc giaThue = new Adapter_ChonLoc(getContext(),"sale");
+        Adapter_ChonLoc giaThue = new Adapter_ChonLoc(getContext(), "sale");
         rcvGia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvGia.setAdapter(giaThue);
 
-        Adapter_ChonLoc all = new Adapter_ChonLoc(getContext(),"");
+        Adapter_ChonLoc all = new Adapter_ChonLoc(getContext(), "");
         rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvAll.setAdapter(all);
         // Khởi tạo và thiết lập sự kiện cho từng RecyclerView
@@ -246,6 +286,7 @@ public class Fragment_TimKiem extends Fragment {
         typeRoomList.add("5 Người");
         spRoomType.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, typeRoomList));
     }
+
     private void AutoScroll(RecyclerView recyclerView, Timer timer, long scrollTime) {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -265,7 +306,9 @@ public class Fragment_TimKiem extends Fragment {
             }
         }, 0, scrollTime); // Thời gian cuộn tùy thuộc vào tham số scrollTime
     }
+
     private void setControl(View view) {
+        tvxinchao = view.findViewById(R.id.tvxinchao);
         rcvLuotthue = view.findViewById(R.id.rcvLuotthue);
         rcvDanhgia = view.findViewById(R.id.rcvDanhgia);
         rcvGia = view.findViewById(R.id.rcvGia);
