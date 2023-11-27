@@ -70,7 +70,7 @@ public class Chi_Tiet_Phong extends AppCompatActivity {
     private void setEvent() {
         String id_kh = "123";
         DatabaseReference reference_yeuthich = FirebaseDatabase.getInstance().getReference("yeu_thich");
-        reference_yeuthich.child(id_kh).child("-Nj83mHkf60DbzdG20ai").addValueEventListener(new ValueEventListener() {
+        reference_yeuthich.child(id_kh).child(phong.getId_phong()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {

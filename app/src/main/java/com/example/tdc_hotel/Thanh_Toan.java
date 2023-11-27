@@ -281,7 +281,10 @@ public class Thanh_Toan extends AppCompatActivity {
                         } else if (radToanbohoadon.isChecked()) {
                             reference.child("tien_coc").setValue(tong_thanh_toan);
                         }
-
+                        Toast.makeText(this, "Thanh toán thành công!!!", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(Thanh_Toan.this, Main_Activity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     } else {
                         Log.e("Thành công", "không thành công");
                         //     tvMessage.setText("message: " + this.getString(R.string.not_receive_info));
