@@ -34,12 +34,9 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
     String soDienThoai, hoTen;
     private FirebaseAuth mAuth;
     private String mVerificationId;
-    public static String SHARED_PRE = "shared_pre";
+    public static String SharedPreferences = "SHARE_PRE";
     public static String sdt_kh = "sdt_kh";
     public static String name_kh = "name_kh";
-    SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PRE, MODE_PRIVATE);
-    SharedPreferences.Editor editor = sharedPreferences.edit();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,15 +111,29 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             kiemTraVaDangNhapNguoiDung();
+
+                            // Khởi tạo SharedPreferences
+                            SharedPreferences sharedPreferences = getSharedPreferences(SharedPreferences, MODE_PRIVATE);
+                            // Lấy Editor để chỉnh sửa
+                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                            // Lưu một chuỗi
                             editor.putString(sdt_kh, "+84" + soDienThoai);
+                            // Áp dụng thay đổi
+                            editor.apply();
                         } else {
                             // Thông báo lỗi xác minh
+                            Toast.makeText(Xac_Thuc_OTP.this, "Mã OTP bạn nhập không đúng!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
     }
 
     private void kiemTraVaDangNhapNguoiDung() {
+        // Khởi tạo SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences(SharedPreferences, MODE_PRIVATE);
+        // Lấy Editor để chỉnh sửa
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("khach_hang");
         databaseReference.child("+84" + soDienThoai).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -133,7 +144,16 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
                     kh.setTen(hoTen);
                     // Nếu chưa có, thêm người dùng mới
                     databaseReference.child("+84" + soDienThoai).setValue(kh);
+
+                    // Lưu một chuỗi
+                    editor.putString(name_kh, hoTen);
+                } else {
+                    khach_hang kh = snapshot.getValue(khach_hang.class);
+                    // Lưu một chuỗi
+                    editor.putString(name_kh, kh.getTen());
                 }
+                // Áp dụng thay đổi
+                editor.apply();
                 // Chuyển sang màn hình chính
                 Intent intent = new Intent(Xac_Thuc_OTP.this, Main_Activity.class);
                 startActivity(intent);
