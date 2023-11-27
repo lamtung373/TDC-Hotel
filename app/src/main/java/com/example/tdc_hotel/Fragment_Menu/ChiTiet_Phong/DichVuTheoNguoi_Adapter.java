@@ -70,7 +70,7 @@ public class DichVuTheoNguoi_Adapter extends RecyclerView.Adapter<DichVuTheoNguo
 
     @Override
     public int getItemCount() {
-        return 5;
+        return data_dv.size();
     }
 
     class DichVuTheoNguoi_Holder extends RecyclerView.ViewHolder {
