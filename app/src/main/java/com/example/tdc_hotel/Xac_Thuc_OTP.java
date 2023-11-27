@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Xac_Thuc_OTP extends AppCompatActivity {
     Button btnXacminh;
+    ImageButton btnQuayLai;
     EditText edtOTP;
     String soDienThoai, hoTen;
     LinearLayout progressBar_OTP;
@@ -70,6 +72,13 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
                 if (!code.isEmpty()) {
                     verifyVerificationCode(code);
                 }
+            }
+        });
+
+        btnQuayLai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -183,5 +192,6 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
         btnXacminh = findViewById(R.id.btnXacminh);
         edtOTP = findViewById(R.id.edtOTP);
         progressBar_OTP = findViewById(R.id.progressBar_OTP);
+        btnQuayLai = findViewById(R.id.btnQuayLai_OTP);
     }
 }
