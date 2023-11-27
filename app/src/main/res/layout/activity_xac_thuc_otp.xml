@@ -20,6 +20,7 @@
         android:textSize="20dp" />
 
     <EditText
+        android:id="@+id/edtOTP"
         style="@style/edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
