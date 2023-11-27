@@ -1,5 +1,8 @@
 package com.example.tdc_hotel.Tab_Layout_LichSu;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +21,7 @@ import com.example.tdc_hotel.Model.hoa_don;
 import com.example.tdc_hotel.Model.khach_hang;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.R;
+import com.example.tdc_hotel.Xac_Thuc_OTP;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -103,7 +107,9 @@ public class Fragment_HT extends Fragment {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                         hoa_don hoaDon = dataSnapshot1.getValue(hoa_don.class);
-                        if(!hoaDon.getThoi_gian_duyet().equals("")&&!!hoaDon.getSo_dien_thoai().toString().equals("0941108117"))
+                        SharedPreferences sharedPreferences =getActivity().getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, MODE_PRIVATE);
+                        String sdt_kh = sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh, "");
+                        if(!hoaDon.getThoi_gian_duyet().equals("")&&!!hoaDon.getSo_dien_thoai().toString().equals(sdt_kh))
                         {
                             if(!hoaDon.getThoi_gian_thanh_toan().toString().equals("")&&hoaDon.getThoi_gian_huy().toString().equals(""))
                             {
