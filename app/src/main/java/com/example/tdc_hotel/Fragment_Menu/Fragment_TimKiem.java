@@ -4,12 +4,11 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +26,8 @@ import com.example.tdc_hotel.R;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -81,6 +82,8 @@ public class Fragment_TimKiem extends Fragment {
     ArrayList<String> typeRoomList = new ArrayList<>();
     private String getLoaiPhong = null;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private Timer timerLuotthue, timerDanhgia, timerGia, timerAll;
+
 
 
     @Override
@@ -215,24 +218,25 @@ public class Fragment_TimKiem extends Fragment {
         Adapter_ChonLoc luotThue = new Adapter_ChonLoc(getContext(),"luot_thue");
         rcvLuotthue.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvLuotthue.setAdapter(luotThue);
-        autoScrollRecyclerView(rcvLuotthue,1000);
 
 
         Adapter_ChonLoc danhGia = new Adapter_ChonLoc(getContext(),"danh_gia_sao");
         rcvDanhgia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvDanhgia.setAdapter(danhGia);
-        autoScrollRecyclerView(rcvDanhgia,1000);
 
 
         Adapter_ChonLoc giaThue = new Adapter_ChonLoc(getContext(),"sale");
         rcvGia.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvGia.setAdapter(giaThue);
-        autoScrollRecyclerView(rcvGia,1000);
 
         Adapter_ChonLoc all = new Adapter_ChonLoc(getContext(),"");
         rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvAll.setAdapter(all);
-        autoScrollRecyclerView(rcvGia,1000);
+        // Khởi tạo và thiết lập sự kiện cho từng RecyclerView
+        AutoScroll(rcvLuotthue, timerLuotthue, 5300);
+        AutoScroll(rcvDanhgia, timerDanhgia, 5700);
+        AutoScroll(rcvGia, timerGia, 5300);
+        AutoScroll(rcvAll, timerAll, 5700);
 
 
         typeRoomList.add("1 Người");
@@ -242,22 +246,24 @@ public class Fragment_TimKiem extends Fragment {
         typeRoomList.add("5 Người");
         spRoomType.setAdapter(new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, typeRoomList));
     }
-    private void autoScrollRecyclerView(final RecyclerView recyclerView, final long timeInterval) {
-        final Handler handler = new Handler();
-        final Runnable runnable = new Runnable() {
-            int itemCount = recyclerView.getAdapter().getItemCount()-1;
-            int currentPosition = 0;
+    private void AutoScroll(RecyclerView recyclerView, Timer timer, long scrollTime) {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
 
+        LinearSnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(recyclerView);
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                if (currentPosition == itemCount) {
-                    currentPosition = 0;
+                if (layoutManager.findFirstCompletelyVisibleItemPosition() < (recyclerView.getAdapter().getItemCount() - 1)) {
+                    recyclerView.smoothScrollToPosition(layoutManager.findFirstCompletelyVisibleItemPosition() + 1);
+                } else {
+                    recyclerView.smoothScrollToPosition(0);
                 }
-                recyclerView.smoothScrollToPosition(currentPosition++);
-                handler.postDelayed(this, timeInterval);
             }
-        };
-        handler.postDelayed(runnable, timeInterval); // Bắt đầu auto-scroll sau khoảng thời gian được truyền vào
+        }, 0, scrollTime); // Thời gian cuộn tùy thuộc vào tham số scrollTime
     }
     private void setControl(View view) {
         rcvLuotthue = view.findViewById(R.id.rcvLuotthue);
