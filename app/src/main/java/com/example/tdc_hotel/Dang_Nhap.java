@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,13 +32,15 @@ public class Dang_Nhap extends AppCompatActivity {
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String soDienThoai = edtSDT.getText().toString();
-                String hoTen = edtHoTen.getText().toString();
+                if (validateInput()) {
+                    String soDienThoai = edtSDT.getText().toString();
+                    String hoTen = edtHoTen.getText().toString();
 
-                Intent intent = new Intent(Dang_Nhap.this, Xac_Thuc_OTP.class);
-                intent.putExtra("so_dien_thoai", soDienThoai);
-                intent.putExtra("ho_ten", hoTen);
-                startActivity(intent);
+                    Intent intent = new Intent(Dang_Nhap.this, Xac_Thuc_OTP.class);
+                    intent.putExtra("so_dien_thoai", soDienThoai);
+                    intent.putExtra("ho_ten", hoTen);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -50,6 +53,18 @@ public class Dang_Nhap extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+    }
+
+    private boolean validateInput() {
+        if (edtSDT.getText().toString().trim().isEmpty()) {
+            edtSDT.setError("Số điện thoại không được để trống");
+            return false;
+        }
+        if (edtHoTen.getText().toString().trim().isEmpty()) {
+            edtHoTen.setError("Họ tên không được để trống");
+            return false;
+        }
+        return true;
     }
 
     private void setControl() {

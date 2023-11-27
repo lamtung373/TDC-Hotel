@@ -25,7 +25,8 @@
         style="@style/edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập số điện thoại" />
+        android:hint="Nhập số điện thoại"
+        android:inputType="phone"/>
 
     <EditText
         android:id="@+id/edtHoTen_DN"
@@ -33,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="40dp"
-        android:hint="Nhập họ tên" />
+        android:hint="Nhập họ tên"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/btnDangNhap"
