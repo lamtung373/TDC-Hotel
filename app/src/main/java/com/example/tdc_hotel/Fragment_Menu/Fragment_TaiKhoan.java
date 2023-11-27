@@ -1,9 +1,12 @@
 // Fragment_TaiKhoan.java
 package com.example.tdc_hotel.Fragment_Menu;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -22,6 +25,7 @@ import androidx.fragment.app.Fragment;
 import com.example.tdc_hotel.Dang_Nhap;
 import com.example.tdc_hotel.Model.khach_hang;
 import com.example.tdc_hotel.R;
+import com.example.tdc_hotel.Xac_Thuc_OTP;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,12 +38,10 @@ Button btnLogout;
 EditText edtTen;
     private boolean isNameChanged = false;
 
-    private DatabaseReference khachHangRef;
+    SharedPreferences sharedPreferences = getActivity().getSharedPreferences(Xac_Thuc_OTP.SHARED_PRE, MODE_PRIVATE);
+    String sdt_kh=sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh,"");
     private View view; // Thêm view như biến toàn cục
-    private ImageView currentSelectedImageView;
-    private static final int REQUEST_IMAGE_CAPTURE = 1;
-    private static final int REQUEST_IMAGE_PICK = 2;
-    ImageView imageView;
+
 
 
     @Override
@@ -70,11 +72,6 @@ EditText edtTen;
     }
 
     private void Initialization() {
-        // Khởi tạo tham chiếu đến "khach_hang" trong Firebase
-        khachHangRef = FirebaseDatabase.getInstance().getReference("khach_hang");
-        // Lấy dữ liệu từ Firebase cho khách hàng mới tạo
-        retrieveKhachHangData("1");
-        // Xử lý đăng xuất khi nút được nhấn
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,32 +82,6 @@ EditText edtTen;
     }
 
 
-    private void retrieveKhachHangData(String khachHangId) {
-        khachHangRef.child(khachHangId).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    // Lấy dữ liệu khách hàng từ Firebase
-                    khach_hang khachHang = snapshot.getValue(khach_hang.class);
-
-                    if (khachHang != null) {
-                        // Hiển thị dữ liệu trong Fragment_TaiKhoan
-                        TextView txtTen = view.findViewById(R.id.edt_Ten);
-                        txtTen.setText(khachHang.getTen());
-
-                        TextView txtSoDienThoai = view.findViewById(R.id.tv_SDT);
-                        txtSoDienThoai.setText(khachHang.getSo_dien_thoai());
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                // Xử lý lỗi khi đọc dữ liệu từ Firebase
-            }
-        });
-
-    }
     private void saveNewName() {
         // Lấy tên mới từ EditText
         String newName = edtTen.getText().toString();
@@ -118,7 +89,7 @@ EditText edtTen;
         // Kiểm tra xem newName có rỗng không và đã thay đổi chưa
         if (!newName.isEmpty() && isNameChanged) {
             // Cập nhật giá trị mới lên Firebase
-            khachHangRef.child("1").child("ten").setValue(newName);
+            //sdt_kh.child("1").child("ten").setValue(newName);
 
             // Hiển thị thông báo lưu thành công
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
