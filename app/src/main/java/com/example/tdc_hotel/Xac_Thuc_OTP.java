@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.tdc_hotel.Model.khach_hang;
@@ -32,6 +33,7 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
     Button btnXacminh;
     EditText edtOTP;
     String soDienThoai, hoTen;
+    LinearLayout progressBar_OTP;
     private FirebaseAuth mAuth;
     private String mVerificationId;
     public static String SharedPreferences = "SHARE_PRE";
@@ -96,6 +98,8 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
                 public void onCodeSent(@NonNull String verificationId,
                                        @NonNull PhoneAuthProvider.ForceResendingToken token) {
                     mVerificationId = verificationId; // Lưu ID xác minh
+                    btnXacminh.setVisibility(View.VISIBLE);
+                    progressBar_OTP.setVisibility(View.GONE);
                     // Thông báo cho người dùng rằng mã đã được gửi
                     Toast.makeText(Xac_Thuc_OTP.this, "Đã gửi mã OTP đến số điện thoại của bạn!", Toast.LENGTH_SHORT).show();
                 }
@@ -167,9 +171,17 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
         });
     }
 
+    private boolean validateInput() {
+        if (edtOTP.getText().toString().trim().isEmpty()) {
+            edtOTP.setError("Vui lòng nhập mã OTP");
+            return false;
+        }
+        return true;
+    }
 
     private void setControl() {
         btnXacminh = findViewById(R.id.btnXacminh);
         edtOTP = findViewById(R.id.edtOTP);
+        progressBar_OTP = findViewById(R.id.progressBar_OTP);
     }
 }
