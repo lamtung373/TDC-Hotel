@@ -76,6 +76,7 @@ public class Adapter_ChonLoc extends RecyclerView.Adapter<Adapter_ChonLoc.DanhGi
             holder.tv_giaphong.setTextSize(13);
             holder.tv_giaphong.setPaintFlags(holder.tv_giaphong.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.tv_giaphong.setText(formatter.format(data.getGia()));
+            holder.tv_salephong.setTextSize(15);
             holder.tv_salephong.setText(formatter.format(data.getSale()) + " VNĐ");
         } else {
             holder.tv_giaphong.setText(formatter.format(data.getGia()) + " VNĐ");
