@@ -272,11 +272,6 @@ public class Fragment_TimKiem extends Fragment {
         Adapter_ChonLoc all = new Adapter_ChonLoc(getContext(), "");
         rcvAll.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         rcvAll.setAdapter(all);
-        // Khởi tạo và thiết lập sự kiện cho từng RecyclerView
-        AutoScroll(rcvLuotthue, timerLuotthue, 5300);
-        AutoScroll(rcvDanhgia, timerDanhgia, 5700);
-        AutoScroll(rcvGia, timerGia, 5300);
-        AutoScroll(rcvAll, timerAll, 5700);
 
 
         typeRoomList.add("1 Người");
