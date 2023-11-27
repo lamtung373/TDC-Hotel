@@ -84,7 +84,9 @@ public class Thanh_Toan_Bank extends AppCompatActivity {
                         Toast.makeText(Thanh_Toan_Bank.this, "Thanh toán thành công!!!", Toast.LENGTH_SHORT).show();
                         pb.setVisibility(View.GONE);
                         btn_thanhtoan.setVisibility(View.VISIBLE);
-                        finish();
+                        Intent intent=new Intent(Thanh_Toan_Bank.this, Main_Activity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                     }
                 });
             }
