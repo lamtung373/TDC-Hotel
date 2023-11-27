@@ -41,7 +41,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Ngân hàng: ABC"
+        android:text="Ngân hàng: MB Bank"
         android:textStyle="normal" />
 
     <TextView
@@ -53,7 +53,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Chi nhánh: ..."
+        android:text="Chi nhánh: Thủ Đức"
         android:textStyle="normal" />
 
     <TextView
@@ -65,7 +65,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="10dp"
-        android:text="Chủ tài khoản: Nguyễn Văn A"
+        android:text="Chủ tài khoản: Huỳnh Quốc Diện"
         android:textStyle="normal" />
 
     <TextView
@@ -87,7 +87,7 @@
         android:layout_below="@id/chutk"
         android:layout_marginRight="20dp"
         android:layout_toRightOf="@+id/stk"
-        android:text="51239123764"
+        android:text="1927112003"
         android:textStyle="normal" />
 
     <ImageView
