@@ -3,6 +3,7 @@ package com.example.tdc_hotel;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,19 +15,19 @@ import com.google.firebase.database.FirebaseDatabase;
 public class Dang_Nhap extends AppCompatActivity {
     Button btnDangNhap;
     EditText edtHoTen, edtSDT;
-    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
+        AutoLogin();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("khach_hang");
         setControl();
         setEvent();
     }
 
     private void setEvent() {
+
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,6 +41,16 @@ public class Dang_Nhap extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void AutoLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, MODE_PRIVATE);
+        String sdt_kh = sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh, "");
+        if(!sdt_kh.equals("")){
+            Intent intent = new Intent(Dang_Nhap.this, Main_Activity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void setControl() {
