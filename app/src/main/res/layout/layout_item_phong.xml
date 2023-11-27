@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_margin="10dp"
+    android:layout_margin="5dp"
     android:orientation="horizontal"
     style="@style/rev_item"
     android:padding="10dp"
@@ -43,7 +43,7 @@
             <TextView
                 android:id="@+id/tv_rattingRoom"
                 style="@style/tv"
-                android:layout_width="65dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:drawableEnd="@drawable/star"
