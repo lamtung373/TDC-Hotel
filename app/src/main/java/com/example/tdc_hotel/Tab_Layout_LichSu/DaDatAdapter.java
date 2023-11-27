@@ -59,7 +59,7 @@ public class DaDatAdapter extends RecyclerView.Adapter<DaDatAdapter.DaDatViewHol
         {
             if(phongList.get(i).getId_phong().equals(hoaDon.getId_phong())) {
                 holder.tvTenphong.setText(phongList.get(i).getTen_phong());
-                Picasso.get().load(phongList.get(i).getAnh_phong().get(1).toString()).into(holder.ivPhong);
+                Picasso.get().load(phongList.get(i).getAnh_phong().get(0).toString()).into(holder.ivPhong);
                 break;
             }
         }
