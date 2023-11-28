@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -136,9 +137,10 @@ public class Fragment_TimKiem extends Fragment {
             @Override
             public void onClick(View v) {
                 // Kiểm tra nếu đã chọn đủ thông tin cần thiết
-                if (btn_thoigiannhan.getText().toString() != null &&
-                        btn_thoigiantra.getText().toString() != null &&
+                if (!btn_thoigiannhan.getText().toString().equals("") &&
+                        !btn_thoigiantra.getText().toString().equals("") &&
                         getLoaiPhong != null) {
+                    Log.e("timenhan",btn_thoigiantra.getText().toString());
                     // Chuyển sang màn hình kết quả tìm kiếm với các thông tin đã chọn
                     Intent intent = new Intent(getActivity(), Ket_Qua_Tim_Kiem.class);
                     intent.putExtra("ngayNhan", btn_thoigiannhan.getText().toString());
