@@ -13,6 +13,7 @@ import com.example.tdc_hotel.Model.phong;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +28,7 @@ import android.widget.Toast;
 
 import com.example.tdc_hotel.R;
 import com.example.tdc_hotel.Thanh_Toan;
+import com.example.tdc_hotel.Xac_Thuc_OTP;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -199,8 +201,12 @@ public class Hoan_Tat_Thongtin_DatPhong extends AppCompatActivity {
         String id_laocong = "";
         String id_letan = "";
         String id_phong = phong.getId_phong();
-        String soDienThoai = "123";
-        String tenKhachHang = "abc";
+
+        SharedPreferences sharedPreferences = getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, MODE_PRIVATE);
+        String id_kh = sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh, "");
+        String name_kh = sharedPreferences.getString(Xac_Thuc_OTP.name_kh, "");
+        String soDienThoai = id_kh;
+        String tenKhachHang = name_kh;
         String thoiGianCoc = "";
         String thoiGianDuyet = "";
         String thoiGianHuy = "";
