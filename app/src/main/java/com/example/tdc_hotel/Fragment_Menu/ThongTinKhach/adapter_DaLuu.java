@@ -2,6 +2,7 @@ package com.example.tdc_hotel.Fragment_Menu.ThongTinKhach;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +20,7 @@ import com.example.tdc_hotel.Model.danh_gia;
 import com.example.tdc_hotel.Model.phong;
 import com.example.tdc_hotel.Model.tien_nghi;
 import com.example.tdc_hotel.R;
+import com.example.tdc_hotel.Xac_Thuc_OTP;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -262,8 +264,10 @@ public class adapter_DaLuu extends RecyclerView.Adapter<adapter_DaLuu.MyViewHold
     }
     void khoi_tao() {
 
-        // Lấy số điện thoại hiện tại, bạn có thể thay thế bằng cách nào đó để lấy số điện thoại đăng nhập
-        String currentPhoneNumber = "123";
+        // Lấy số điện thoại hiện tại từ SharedPreferences
+        SharedPreferences preferences = context.getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, Context.MODE_PRIVATE);
+        String currentPhoneNumber = preferences.getString(Xac_Thuc_OTP.sdt_kh, "default");
+
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference yeuThichRef = database.getReference("yeu_thich").child(currentPhoneNumber);
