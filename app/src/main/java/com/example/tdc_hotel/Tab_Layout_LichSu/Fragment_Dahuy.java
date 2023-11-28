@@ -102,7 +102,7 @@ public class Fragment_Dahuy extends Fragment {
                         SharedPreferences sharedPreferences =getActivity().getSharedPreferences(Xac_Thuc_OTP.SharedPreferences, MODE_PRIVATE);
                         String sdt_kh = sharedPreferences.getString(Xac_Thuc_OTP.sdt_kh, "");
 
-                        if(!hoaDon.getThoi_gian_duyet().equals("")&&hoaDon.getSo_dien_thoai().toString().equals(sdt_kh))
+                        if(hoaDon.getSo_dien_thoai().toString().equals(sdt_kh))
                         {
                             Log.e(hoaDon.getId_hoa_don(),"ddddd");
                             if(hoaDon.getThoi_gian_thanh_toan().toString().equals("")&&!hoaDon.getThoi_gian_huy().toString().equals(""))

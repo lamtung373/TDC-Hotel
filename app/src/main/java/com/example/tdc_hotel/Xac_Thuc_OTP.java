@@ -68,9 +68,11 @@ public class Xac_Thuc_OTP extends AppCompatActivity {
         btnXacminh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String code = edtOTP.getText().toString().trim();
-                if (!code.isEmpty()) {
-                    verifyVerificationCode(code);
+                if (validateInput()) {
+                    String code = edtOTP.getText().toString().trim();
+                    if (!code.isEmpty()) {
+                        verifyVerificationCode(code);
+                    }
                 }
             }
         });
