@@ -68,7 +68,7 @@ public class Adapter_ChonLoc extends RecyclerView.Adapter<Adapter_ChonLoc.DanhGi
         DecimalFormat formatter = new DecimalFormat("#");
         holder.tv_ratting.setText(String.valueOf(data.getDanh_gia_sao()));
         holder.tvTenphongFinding.setText(String.valueOf(data.getTen_phong()));
-        holder.tv_giaphong.setText(formatter.format(data.getGia()) + "đ");
+        holder.tv_giaphong.setText(formatter.format(data.getGia()) + "Đ");
         holder.tv_luotThue.setText(data.getLuot_thue() + " Lượt thuê");
         if (data.getSale() != 0) {
             holder.tv_giaphong.setVisibility(View.VISIBLE);
@@ -77,9 +77,9 @@ public class Adapter_ChonLoc extends RecyclerView.Adapter<Adapter_ChonLoc.DanhGi
             holder.tv_giaphong.setPaintFlags(holder.tv_giaphong.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
             holder.tv_giaphong.setText(formatter.format(data.getGia()));
             holder.tv_salephong.setTextSize(13);
-            holder.tv_salephong.setText(formatter.format(data.getSale()) + " đ");
+            holder.tv_salephong.setText(formatter.format(data.getSale()) + " Đ");
         } else {
-            holder.tv_giaphong.setText(formatter.format(data.getGia()) + " đ");
+            holder.tv_giaphong.setText(formatter.format(data.getGia()) + " Đ");
             holder.tv_salephong.setVisibility(View.GONE);
             holder.tv_giaphong.setTextColor(Color.RED);
             holder.tv_giaphong.setTextSize(13);
